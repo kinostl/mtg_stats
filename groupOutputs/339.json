@@ -1,0 +1,16 @@
+[
+    "as long as cardname is paired with another creature each of those creatures has whenever this creature deals damage to an opponent draw a card",
+    "as long as cardname is paired with another creature both creatures have vigilance",
+    "as long as cardname is paired with another creature both creatures have lifelink",
+    "as long as cardname is paired with another creature both creatures have flying",
+    "as long as cardname is paired with another creature each of those creatures gets plus n plus n",
+    "as long as cardname is paired with another creature each of those creatures has genericmana specialmana untap this creature",
+    "as long as cardname is paired with another creature both creatures have haste",
+    "as long as cardname is paired with another creature both creatures have reach",
+    "as long as cardname is paired with another creature both creatures have trample",
+    "as long as cardname is paired with another creature both creatures have deathtouch",
+    "draw a card",
+    "n draw a card",
+    "specialmana draw a card",
+    "whenever cardname deals damage to an opponent draw a card"
+]

@@ -1,0 +1,16 @@
+[
+    "all slivers have specialmana add one mana of any color",
+    "creatures you control have specialmana add one mana of any color",
+    "enchanted land has specialmana add one mana of any color",
+    "enchanted creature has specialmana add one mana of any color",
+    "equipped creature has specialmana add one mana of any color",
+    "genericmana specialmana add one mana of any color",
+    "genericmana add one mana of any color",
+    "lands you control have specialmana add one mana of any color",
+    "sacrifice cardname add one mana of any color",
+    "specialmana add one mana of any color",
+    "specialmana add one mana of the chosen color",
+    "specialmana specialmana add one mana of any color",
+    "specialmana sacrifice cardname add one mana of any color",
+    "specialmana pay specialmana add one mana of any color"
+]

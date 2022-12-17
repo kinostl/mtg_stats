@@ -1,0 +1,12 @@
+[
+    "all slivers have specialmana target player mills a card",
+    "genericmana specialmana target player mills a card",
+    "genericmana specialmana each player mills a card",
+    "genericmana specialmana target player draws a card",
+    "specialmana each player mills a card",
+    "specialmana target player mills a card",
+    "specialmana mill a card",
+    "target player discards a card",
+    "target player mills a card",
+    "target player draws a card"
+]

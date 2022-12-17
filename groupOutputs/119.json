@@ -1,0 +1,11 @@
+[
+    "all slivers have specialmana tap target permanent",
+    "all slivers have specialmana regenerate target sliver",
+    "specialmana tap target spirit",
+    "specialmana tap target creature",
+    "specialmana specialmana tap target permanent",
+    "specialmana untap target permanent",
+    "specialmana tap target artifact",
+    "tap target permanent",
+    "untap target permanent"
+]

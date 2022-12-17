@@ -1,0 +1,22 @@
+[
+    "addendum if you cast this spell during your main phase you gain n life",
+    "addendum if you cast this spell during your main phase that creature gains flying until end of turn",
+    "addendum if you cast this spell during your main phase draw a card",
+    "cardname gains indestructible until end of turn",
+    "flying",
+    "genericmana specialmana target creature gains flying until end of turn",
+    "genericmana target creature gains flying until end of turn",
+    "genericmana cardname gains flying until end of turn",
+    "n it gains flying until end of turn",
+    "specialmana cardname gains flying until end of turn",
+    "specialmana specialmana target creature gains flying until end of turn",
+    "specialmana target creature gains flying until end of turn",
+    "specialmana enchanted creature gains flying until end of turn",
+    "specialmana crovax gains flying until end of turn",
+    "target creature loses flying until end of turn",
+    "target creature gains indestructible until end of turn",
+    "target creature gains flying until end of turn",
+    "target creature gains trample until end of turn",
+    "target creature gains deathtouch until end of turn",
+    "target creature gains flying until end of turn untap it"
+]

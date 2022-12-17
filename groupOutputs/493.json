@@ -1,0 +1,11 @@
+[
+    "as long as there is exactly one tide counter on cardname it gets minus n minus n",
+    "as long as there are exactly three tide counters on cardname it gets plus n plus n",
+    "as long as there are exactly three tide counters on cardname all basecolor creatures get plus n plus n",
+    "enchanted creature gets plus n plus n",
+    "equipped creature gets plus n plus n",
+    "n n",
+    "n nn",
+    "plus n scry n",
+    "plus n surveil n"
+]

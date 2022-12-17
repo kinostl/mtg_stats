@@ -1,0 +1,22 @@
+[
+    "all slivers have specialmana add one mana of any color",
+    "as long as cardname is equipped it has haste",
+    "as long as cardname is monstrous it has flying",
+    "as long as cardname is monstrous it has reach",
+    "as long as cardname is renowned it has vigilance and specialmana add one mana of any color",
+    "as long as cardname is monstrous it has trample",
+    "as long as cardname is monstrous it has hexproof and indestructible",
+    "enchanted land has specialmana add one mana of any color",
+    "enchanted creature has specialmana add one mana of any color",
+    "equipped creature has specialmana add one mana of any color",
+    "genericmana specialmana add one mana of any color",
+    "genericmana add one mana of any color",
+    "specialmana add one mana of any color",
+    "specialmana add three mana of any one color",
+    "specialmana add one mana of the chosen color",
+    "specialmana specialmana add one mana of any color",
+    "specialmana sacrifice cardname add one mana of any color",
+    "specialmana pay specialmana add one mana of any color",
+    "specialmana add two mana of any one color",
+    "vigilance"
+]

@@ -1,0 +1,7 @@
+[
+    "all slivers have genericmana regenerate this permanent",
+    "all slivers have genericmana if this permanent is on the battlefield flip a coin if you win the flip exile this permanent and return it to the battlefield under its owner's control at the beginning of the next end step if you lose the flip sacrifice it",
+    "exile target creature return it to the battlefield under its owner's control at the beginning of the next end step",
+    "genericmana",
+    "specialmana exile cardname return it to the battlefield under its owner's control at the beginning of the next end step"
+]

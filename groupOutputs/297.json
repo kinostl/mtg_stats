@@ -1,0 +1,6 @@
+[
+    "as long as cardname is untapped players can't untap more than two permanents during their untap steps",
+    "as long as cardname is untapped players can't untap more than one land during their untap steps",
+    "players can't untap more than one artifact during their untap steps",
+    "players can't untap more than one creature during their untap steps"
+]

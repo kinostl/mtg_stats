@@ -1,0 +1,9 @@
+[
+    "all creatures get minus n minus n",
+    "all creatures of the chosen type get minus n minus n",
+    "creatures of the chosen color get plus n plus n",
+    "creatures of the chosen type get plus n plus n",
+    "n n",
+    "n nn",
+    "other creatures get minus n minus n"
+]

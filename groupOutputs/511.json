@@ -1,0 +1,16 @@
+[
+    "as cardname enters the battlefield choose a color",
+    "as cardname enters the battlefield choose a player",
+    "as cardname enters the battlefield choose a watermark",
+    "as cardname enters the battlefield choose a creature",
+    "as cardname enters the battlefield choose a rarity",
+    "as cardname enters the battlefield choose a word",
+    "as cardname enters the battlefield flip a coin if the coin comes up heads cardname enters the battlefield as a n n creature with haste if it comes up tails cardname enters the battlefield as a n n creature with defender",
+    "as cardname enters the battlefield choose a letter",
+    "as cardname enters the battlefield choose a number",
+    "cardname enters the battlefield tapped",
+    "defender",
+    "haste",
+    "n n",
+    "n nn"
+]

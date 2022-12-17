@@ -1,0 +1,14 @@
+[
+    "all damage that would be dealt to you is dealt to enchanted creature instead",
+    "all damage that would be dealt to you is dealt to cardname instead",
+    "all damage that would be dealt to enchanted creature is dealt to its controller instead",
+    "all damage that would be dealt to you is dealt to equipped creature instead",
+    "prevent all combat damage that would be dealt by enchanted creature",
+    "prevent all damage that would be dealt to cardname",
+    "prevent all damage that would be dealt to enchanted creature",
+    "prevent all damage that would be dealt to creatures",
+    "prevent all damage that would be dealt by enchanted creature",
+    "prevent all damage that would be dealt to you",
+    "prevent all combat damage that would be dealt to equipped creature",
+    "prevent all noncombat damage that would be dealt to equipped creature"
+]

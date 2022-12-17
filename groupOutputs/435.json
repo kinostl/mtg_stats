@@ -1,0 +1,15 @@
+[
+    "as long as cardname has a plus n plus n counter on it it can attack as though it didn't have defender",
+    "as long as cardname has three or more plus n plus n counters on it it can attack as though it didn't have defender",
+    "cardname escapes with a plus n plus n counter on it",
+    "defender",
+    "n n",
+    "n nn",
+    "plus n scry n",
+    "plus n surveil n",
+    "put a plus n plus n counter on cardname",
+    "put a plus n plus n counter on target creature",
+    "specialmana put a plus n plus n counter on mikaeus",
+    "when cardname has no plus n plus n counters on it sacrifice it",
+    "whenever cardname blocks put a plus n plus n counter on it"
+]

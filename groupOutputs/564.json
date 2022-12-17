@@ -1,0 +1,13 @@
+[
+    "all damage that would be dealt to you is dealt to enchanted creature instead",
+    "all damage that would be dealt to you is dealt to equipped creature instead",
+    "as long as cardname is untapped all damage that would be dealt to you by artifacts is dealt to cardname instead",
+    "as long as cardname is untapped all combat damage that would be dealt to you by unblocked creatures is dealt to cardname instead",
+    "as long as cardname is untapped all damage that would be dealt to you by unblocked creatures is dealt to cardname instead",
+    "cardname is all colors",
+    "prevent all damage that would be dealt to creatures you control",
+    "prevent all damage that would be dealt to cardname",
+    "prevent all damage that would be dealt to enchanted creature",
+    "prevent all damage that would be dealt to creatures",
+    "prevent all damage that would be dealt to you"
+]

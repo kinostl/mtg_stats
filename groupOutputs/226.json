@@ -1,0 +1,21 @@
+[
+    "all creatures have haste",
+    "all creatures have vigilance",
+    "all creatures have forestwalk they can't be blocked as long as defending player controls a baseland",
+    "basecolor creatures have plainswalk they can't be blocked as long as defending player controls a plains",
+    "basecolor creatures have forestwalk they can't be blocked as long as defending player controls a baseland",
+    "cardname can't be blocked",
+    "cardname can't be blocked as long as defending player controls an artifact",
+    "cardname can't be blocked as long as defending player controls an enchantment",
+    "enchanted creature has forestwalk it can't be blocked as long as defending player controls a baseland",
+    "enchanted creature has swampwalk it can't be blocked as long as defending player controls a baseland",
+    "enchanted creature has mountainwalk it can't be blocked as long as defending player controls a baseland",
+    "flying swampwalk this creature can't be blocked as long as defending player controls a baseland",
+    "forestwalk this creature can't be blocked as long as defending player controls a baseland",
+    "forestwalk",
+    "mountainwalk this creature can't be blocked as long as defending player controls a baseland",
+    "other zombie creatures have swampwalk they can't be blocked as long as defending player controls a baseland",
+    "other elf creatures have forestwalk they can't be blocked as long as defending player controls a baseland",
+    "snow forestwalk this creature can't be blocked as long as defending player controls a snow baseland",
+    "swampwalk this creature can't be blocked as long as defending player controls a baseland"
+]

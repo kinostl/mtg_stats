@@ -1,0 +1,15 @@
+[
+    "as cardname enters the battlefield you may exile two creature cards from graveyards if you do it enters the battlefield as a copy of one of those cards with a number of additional plus n plus n counters on it equal to the power of the other card",
+    "cardname enters the battlefield tapped",
+    "exile cardname",
+    "n n",
+    "n nn",
+    "plus n scry n",
+    "plus n surveil n",
+    "when cardname enters the battlefield draw two cards",
+    "when cardname enters the battlefield exile target creature",
+    "when cardname enters the battlefield mill two cards",
+    "when cardname enters the battlefield you may tap target creature",
+    "when cardname enters the battlefield you may destroy target creature",
+    "you may cast cardname from exile"
+]

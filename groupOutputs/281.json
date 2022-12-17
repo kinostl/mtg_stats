@@ -1,0 +1,12 @@
+[
+    "artifact spells you cast cost genericmana less to cast",
+    "artifact instant and sorcery spells your opponents cast cost genericmana more to cast",
+    "artifact and enchantment spells your opponents cast cost genericmana more to cast",
+    "creature spells you cast cost genericmana more to cast",
+    "genericmana",
+    "instant and sorcery spells you cast cost genericmana less to cast",
+    "sorcery spells cost genericmana more to cast",
+    "spells cost genericmana more to cast",
+    "spells your opponents cast cost genericmana more to cast",
+    "spells you cast cost genericmana less to cast"
+]

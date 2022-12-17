@@ -1,0 +1,14 @@
+[
+    "all slivers have pay n life return this permanent to its owner's hand",
+    "n return target creature to its owner's hand",
+    "pay n life return cardname to its owner's hand",
+    "return target creature to its owner's hand",
+    "return target permanent to its owner's hand",
+    "return target artifact to its owner's hand",
+    "return target nonland permanent to its owner's hand",
+    "return target enchanted permanent to its owner's hand",
+    "return target baseland to its owner's hand",
+    "return target permanent to its controller's hand",
+    "return cardname to its owner's hand",
+    "specialmana pay n life return cardname to its owner's hand"
+]

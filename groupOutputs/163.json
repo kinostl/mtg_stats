@@ -1,0 +1,18 @@
+[
+    "all slivers have genericmana sacrifice this permanent draw a card",
+    "all slivers have genericmana regenerate this permanent",
+    "all slivers have genericmana sacrifice this permanent this permanent deals n damage to any target",
+    "all slivers have genericmana sacrifice this permanent destroy target permanent",
+    "all slivers have genericmana sacrifice this permanent you gain n life",
+    "cardname deals n damage to any target",
+    "cardname deals x damage to any target",
+    "cardname deals nn damage to any target",
+    "genericmana specialmana cardname deals n damage to any target",
+    "genericmana cardname deals n damage to any target",
+    "genericmana sacrifice cardname it deals n damage to any target",
+    "genericmana",
+    "genericmana sacrifice a nonland permanent cardname deals n damage to any target",
+    "sacrifice cardname it deals n damage to any target",
+    "sacrifice cardname cardname deals n damage to any target",
+    "specialmana cardname deals n damage to any target"
+]

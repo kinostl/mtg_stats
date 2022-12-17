@@ -1,0 +1,9 @@
+[
+    "as long as cardname is untapped if a creature would deal combat damage to you prevent n of that damage",
+    "if an artifact would deal damage to you prevent n of that damage",
+    "if a basecolor source would deal damage to you prevent n of that damage",
+    "if a creature would deal damage to you prevent n of that damage",
+    "if a source an opponent controls would deal damage to you prevent n of that damage",
+    "if a source would deal damage to equipped creature prevent n of that damage",
+    "if a source would deal damage to you prevent n of that damage"
+]

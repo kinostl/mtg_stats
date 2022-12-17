@@ -1,0 +1,13 @@
+[
+    "all creatures lose trample until end of turn if a creature would deal combat damage to a creature this turn it deals double that damage to that creature instead",
+    "all creatures lose flying",
+    "all creatures lose flying until end of turn",
+    "if cardname would deal combat damage to a player it deals double that damage to that player instead",
+    "if a source would deal damage to enchanted player it deals double that damage to that player instead",
+    "if equipped creature would deal combat damage it deals double that damage instead",
+    "if another creature would deal combat damage to equipped creature it deals double that damage to equipped creature instead",
+    "if a source would deal damage to an opponent it deals double that damage to that player instead",
+    "if a source would deal damage to you it deals double that damage to you instead",
+    "if a source would deal damage to cardname it deals double that damage to cardname instead",
+    "trample"
+]

@@ -1,0 +1,11 @@
+[
+    "any player may cast creature spells with mana value n or less without paying their mana costs and as though they had flash",
+    "counter target spell with mana value n or less",
+    "destroy all creatures with mana value n or less",
+    "destroy target creature with mana value n or less",
+    "destroy each creature with mana value n or less",
+    "enchant creature with mana value n or less",
+    "flash",
+    "target player sacrifices a creature with mana value n or less",
+    "your opponents can't cast spells with mana value n or less"
+]

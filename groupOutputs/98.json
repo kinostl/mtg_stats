@@ -1,0 +1,12 @@
+[
+    "all slivers have genericmana sacrifice this permanent draw a card",
+    "all slivers have genericmana regenerate this permanent",
+    "all slivers have genericmana sacrifice this permanent destroy target permanent",
+    "draw a card",
+    "genericmana sacrifice cardname draw a card",
+    "genericmana sacrifice this artifact draw a card",
+    "genericmana",
+    "n draw a card",
+    "sacrifice cardname draw a card",
+    "specialmana draw a card"
+]

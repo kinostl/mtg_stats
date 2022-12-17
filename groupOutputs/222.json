@@ -1,0 +1,14 @@
+[
+    "all damage that would be dealt to you is dealt to cardname instead",
+    "all damage that would be dealt to you and other permanents you control is dealt to cardname instead",
+    "prevent all noncombat damage that would be dealt to you and creatures you control",
+    "prevent all damage that would be dealt to creatures you control",
+    "prevent all damage that would be dealt to attacking creatures you control",
+    "prevent all damage that would be dealt to creature tokens you control",
+    "prevent all damage that would be dealt to enchanted creature",
+    "prevent all noncombat damage that would be dealt to you and other permanents you control",
+    "prevent all damage that would be dealt to creatures",
+    "prevent all damage that would be dealt to you",
+    "prevent all damage that would be dealt to you and creatures you control this turn",
+    "prevent all damage that would be dealt to you and permanents you control this turn"
+]

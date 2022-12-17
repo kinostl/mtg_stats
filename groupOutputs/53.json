@@ -1,0 +1,5 @@
+[
+    "add x mana of any one color where x is n plus the sacrificed creature's mana value spend this mana only to cast creature spells",
+    "genericmana add one mana of any color",
+    "specialmana add one mana of any color"
+]

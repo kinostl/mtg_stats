@@ -1,0 +1,10 @@
+[
+    "as long as cardname is untapped each spell that would cost less than three mana to cast costs three mana to cast additional mana in the cost may be paid with any color of mana or colorless mana for example a spell that would cost genericmana specialmana to cast costs genericmana specialmana to cast instead",
+    "embalm genericmana specialmana specialmana",
+    "equip genericmana specialmana specialmana",
+    "foretell genericmana specialmana specialmana",
+    "genericmana specialmana add specialmana",
+    "genericmana",
+    "kicker genericmana specialmana specialmana",
+    "morph genericmana specialmana specialmana"
+]

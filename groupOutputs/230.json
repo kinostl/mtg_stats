@@ -1,0 +1,10 @@
+[
+    "all lands gain shroud until end of turn they can't be the targets of spells or abilities",
+    "creatures you control gain shroud until end of turn they can't be the targets of spells or abilities",
+    "genericmana specialmana specialmana creatures you control gain shroud until end of turn they can't be the targets of spells or abilities",
+    "genericmana specialmana cardname gains shroud until end of turn it can't be the target of spells or abilities",
+    "shroud",
+    "specialmana cardname gains shroud until end of turn it can't be the target of spells or abilities",
+    "specialmana enchanted creature gains shroud until end of turn it can't be the target of spells or abilities",
+    "you gain shroud until end of turn you can't be the target of spells or abilities"
+]

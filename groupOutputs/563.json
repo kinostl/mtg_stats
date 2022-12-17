@@ -1,0 +1,10 @@
+[
+    "as cardname enters the battlefield choose an artist",
+    "as cardname enters the battlefield choose an opponent",
+    "as cardname enters the battlefield exile an instant or sorcery card from your graveyard",
+    "as cardname enters the battlefield exile any number of creature cards from your graveyard",
+    "cardname enters the battlefield tapped",
+    "genericmana exile an instant or sorcery card from your graveyard choose one",
+    "n an instant or sorcery",
+    "specialmana specialmana exile target instant or sorcery card from your graveyard"
+]

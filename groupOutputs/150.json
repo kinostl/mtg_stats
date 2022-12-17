@@ -1,0 +1,16 @@
+[
+    "all sliver creatures have flying",
+    "all sliver creatures have defender",
+    "all creatures have haste",
+    "all sliver creatures have trample",
+    "all sliver creatures have haste",
+    "all sliver creatures have poisonous n whenever a sliver deals combat damage to a player that player gets a poison counter a player with ten or more poison counters loses the game",
+    "all sliver creatures have vigilance",
+    "all creatures have vigilance",
+    "all sliver creatures have reach",
+    "enchanted creature has poisonous n whenever it deals combat damage to a player that player gets three poison counters a player with ten or more poison counters loses the game",
+    "whenever a goblin deals combat damage to a player that player discards a card",
+    "whenever this creature deals combat damage to a player",
+    "whenever cardname deals damage to a player that player gets a poison counter a player with ten or more poison counters loses the game",
+    "whenever cardname deals damage to a player that player gets two poison counters a player with ten or more poison counters loses the game"
+]

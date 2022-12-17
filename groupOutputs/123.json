@@ -1,0 +1,6 @@
+[
+    "all creatures get minus n minus n",
+    "all creatures get minus x minus n where x is the number of cards in your hand",
+    "enchanted creature gets minus x minus n where x is the number of cards in your graveyard",
+    "enchanted creature gets minus x minus x where x is the number of cards in your hand"
+]
