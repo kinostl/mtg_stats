@@ -1,0 +1,10 @@
+[
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of artifacts they control",
+    "at the beginning of each opponent's upkeep cardname deals damage to that player equal to the number of cards in that player's hand",
+    "at the beginning of your upkeep cardname deals n damage to you",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of snow lands they control",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of nonbasic lands they control",
+    "at the beginning of each player's upkeep cardname deals n damage to that player",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of swamps they control",
+    "cardname deals n damage to each player"
+]

@@ -1,0 +1,11 @@
+[
+    "at the beginning of your upkeep you may gain n life",
+    "at the beginning of your upkeep you lose n life",
+    "at the beginning of your upkeep you gain n life",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep if you have nn or less life you gain n life",
+    "at the beginning of your upkeep if you have n or less life sacrifice cardname and take an extra turn after this one",
+    "take an extra turn after this one",
+    "take an extra turn after this one exile cardname",
+    "target player takes an extra turn after this one"
+]

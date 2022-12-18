@@ -1,0 +1,21 @@
+[
+    "at the beginning of your upkeep cardname deals n damage to each creature and each player",
+    "at the beginning of your upkeep if you control a basecolor or basecolor permanent cardname deals n damage to target creature if you control a basecolor permanent and a basecolor permanent cardname deals n damage instead",
+    "at the beginning of your upkeep cardname deals damage to any target equal to the number of shrines you control",
+    "at the beginning of your upkeep cardname deals n damage to any target if you're the monarch it deals n damage instead",
+    "at the beginning of each player's upkeep cardname deals x damage to that player where x is the number of untapped lands they controlled at the beginning of this turn",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of artifacts they control",
+    "at the beginning of each opponent's upkeep cardname deals damage to that player equal to the number of cards in that player's hand",
+    "at the beginning of your upkeep cardname deals x damage to target opponent where x is the number of cards in your hand minus the number of cards in that player's hand",
+    "at the beginning of your upkeep choose one",
+    "at the beginning of your upkeep cardname deals n damage to you",
+    "at the beginning of each player's upkeep cardname deals n damage to them",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep cardname deals n damage to any target",
+    "at the beginning of your upkeep cardname deals n damage to enchanted creature",
+    "cardname deals n damage to target creature",
+    "cardname deals n damage to any target",
+    "cardname deals n damage to each creature",
+    "cardname deals n damage to each opponent",
+    "cardname deals n damage to each player"
+]

@@ -1,0 +1,21 @@
+[
+    "at the beginning of each player's upkeep that player returns a creature they control to its owner's hand",
+    "at the beginning of each player's upkeep that player gains control of cardname",
+    "at the beginning of each player's upkeep that player may put a plus n plus n counter on target creature of their choice",
+    "at the beginning of each player's upkeep that player chooses target player who has more life than they do and is their opponent the first player may have cardname deal n damage to the second player",
+    "at the beginning of enchanted player's upkeep that player sacrifices a creature or planeswalker if the player can't they lose n life",
+    "at the beginning of each player's upkeep that player chooses a color until end of turn lands tapped for mana produce mana of the chosen color instead of any other color",
+    "at the beginning of each player's upkeep that player may choose any number of tapped basecolor creatures they control and pay genericmana for each creature chosen this way if the player does untap those creatures",
+    "at the beginning of each player's end step that player draws a card if the player is your opponent and has four or more cards in hand cardname deals n damage to that player",
+    "at the beginning of each player's upkeep that player discards a card at random",
+    "at the beginning of each player's upkeep if that player controls a plains they gain n life",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player loses n life",
+    "at the beginning of each player's upkeep that player sacrifices a basecolor or basecolor permanent",
+    "at the beginning of each player's upkeep that player untaps a land they control",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player sacrifices a nonminus zombie creature",
+    "at the beginning of each player's upkeep that player sacrifices a nonbasic land",
+    "each player sacrifices a land",
+    "target player sacrifices a land"
+]

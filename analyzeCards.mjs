@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 const exec = util.promisify(_exec)
 
 //import groupSimilarCards from './groupSimilarCards.mjs'
-import groupSimilarCards from './groupSimilarCards.thread.mjs'
+import groupSimilarCards from './groupSimilarCards.new.mjs'
 import oracleCards from './oracle-cards.js'
 
 const cardTypes = [

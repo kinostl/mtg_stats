@@ -1,0 +1,14 @@
+[
+    "at the beginning of your upkeep each opponent draws a card",
+    "at the beginning of enchanted player's upkeep that player mills two cards",
+    "at the beginning of your upkeep each player discards a card",
+    "at the beginning of each player's upkeep that player discards a card at random",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player reveals a card at random from their hand if it's a land card the player puts it onto the battlefield otherwise the player casts it without paying its mana cost if able",
+    "at the beginning of each player's upkeep that player loses n life",
+    "at the beginning of each player's upkeep that player untaps a land they control",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player sacrifices a nonminus zombie creature",
+    "at the beginning of each player's upkeep that player chooses a card exiled with cardname at random and puts it onto the battlefield",
+    "at the beginning of each player's upkeep that player sacrifices a nonbasic land"
+]

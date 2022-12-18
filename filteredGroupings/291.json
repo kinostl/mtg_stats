@@ -1,0 +1,13 @@
+[
+    "all creatures get minus n minus n",
+    "as long as there is exactly one tide counter on cardname all basecolor creatures get minus n minus n",
+    "as long as there are exactly three tide counters on cardname all basecolor creatures get plus n plus n",
+    "basecolor creatures get plus n plus n",
+    "basecolor creatures get minus n minus n",
+    "creature tokens get minus n minus n",
+    "creatures without flying get minus n minus n",
+    "creatures with flying get minus n minus n",
+    "creatures you control get minus n minus n",
+    "destroy all basecolor creatures",
+    "tap all basecolor creatures"
+]

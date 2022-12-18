@@ -1,0 +1,15 @@
+[
+    "at the beginning of your end step discard a card",
+    "at the beginning of the end step sacrifice cardname",
+    "at the beginning of your end step discard your hand",
+    "at the beginning of your upkeep you may mill a card",
+    "at the beginning of your end step you may manifest the top card of your library put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card",
+    "at the beginning of your upkeep exile the top card of your library",
+    "at the beginning of your next end step you lose the game",
+    "at the beginning of your end step choose one",
+    "genericmana specialmana manifest the top card of your library put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card",
+    "manifest the top card of your library put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card",
+    "manifest the top two cards of your library to manifest a card put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card",
+    "n a creature",
+    "when enchanted creature dies manifest the top card of your library put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card"
+]

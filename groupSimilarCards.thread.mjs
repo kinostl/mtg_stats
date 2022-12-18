@@ -5,7 +5,9 @@ import cliProgress from 'cli-progress'
 import WorkerPool from './workerPool.mjs'
 import os from 'node:os'
 
-const multibar = new cliProgress.MultiBar()
+const multibar = new cliProgress.MultiBar({
+  hideCursor: true
+})
 
 const getKeys = (control, test) => {
   const control_string = JSON.stringify(control)
@@ -14,13 +16,14 @@ const getKeys = (control, test) => {
   const test_control_key = `${test_string}_${control_string}`
   return [control_test_key, test_control_key]
 }
-async function loadFiles () {
+async function loadFiles (destinationPath) {
   const cache = new Map()
-  const files = await fs.readdir('./groupOutputs')
+  const files = await fs.readdir(destinationPath)
+  if (files.length < 1) return [0, []]
   const promises = files.map(async file => {
     const number = Number(file.split('.')[0])
     if (Number.isInteger(number)) {
-      const groupRes = await fs.readFile(`./groupOutputs/${file}`)
+      const groupRes = await fs.readFile(`./${destinationPath}/${file}`)
       const group = JSON.parse(groupRes)
       group.forEach((control, x, arr) => {
         arr.forEach(test => {
@@ -43,9 +46,10 @@ async function loadFiles () {
 
 async function groupSimilarCards (list) {
   const groupMin = 3
+  const destinationPath = './filteredGroupings'
 
   console.log('loading cache...')
-  const [count, matchCache] = await loadFiles()
+  const [count, matchCache] = await loadFiles(destinationPath)
   console.log('Resuming at', count)
   const slice = list.slice(count)
   console.log(slice.length, 'entries remaining.')
@@ -57,11 +61,11 @@ async function groupSimilarCards (list) {
   const chunkBar = multibar.create(
     list.length,
     count,
-    { cached: pool.matchCache.size },
+    { cached: pool.matchCache.size, lastFile: 'None' },
     {
       stopOnComplete: true,
       format:
-        'Chunks Completed | {bar} {percentage}% | ETA: {eta}s | Duration: {duration} | {value}/{total} | Cache Size: {cached}'
+        'Chunks Completed | {bar} {percentage}% | ETA: {eta}s | Duration: {duration} | {value}/{total} | Cache Size: {cached} | Last File: {lastFile}'
     }
   )
 
@@ -69,10 +73,10 @@ async function groupSimilarCards (list) {
   const updateFinish = () => {
     finished++
     if (finished === slice.length) {
-      exec('fdupes ./groupOutputs -d -N', () => {
+      exec(`fdupes ./${destinationPath} -d -N`, () => {
         pool.close()
         multibar.stop()
-        console.log('Files written to ./groupOutputs')
+        console.log(`Files written to ./${destinationPath}`)
         console.log('Duplicates removed')
       })
     }
@@ -89,7 +93,13 @@ async function groupSimilarCards (list) {
       })
 
       if (doWrite) {
-        fs.writeFile(`./groupOutputs/${i}.json`, groupString).then(updateFinish)
+        fs.writeFile(`./${destinationPath}/${i + count + 1}.json`, groupString)
+          .then(() => {
+            chunkBar.update({
+              lastFile: `./${destinationPath}/${i + count + 1}.json`
+            })
+          })
+          .then(updateFinish)
       } else {
         updateFinish()
       }

@@ -1,0 +1,13 @@
+[
+    "at the beginning of each player's upkeep cardname deals x damage to that player where x is the number of untapped lands they controlled at the beginning of this turn",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of artifacts they control",
+    "at the beginning of each player's end step cardname deals x damage to that player where x is the number of untapped lands they control",
+    "at the beginning of each player's upkeep cardname deals n damage to them",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of snow lands they control",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of nonbasic lands they control",
+    "at the beginning of each player's upkeep cardname deals n damage to that player",
+    "at the beginning of each player's upkeep cardname deals x damage to that player where x is n minus the number of cards in their hand",
+    "at the beginning of each player's upkeep cardname deals damage to that player equal to the number of swamps they control",
+    "cardname deals x damage to target creature",
+    "cardname deals x damage to any target"
+]

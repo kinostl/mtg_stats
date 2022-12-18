@@ -1,0 +1,5 @@
+[
+    "at the beginning of each other player's draw step that player draws an additional card",
+    "at the beginning of each player's draw step that player draws an additional card",
+    "at the beginning of each opponent's draw step that player draws an additional card for each growth counter on cardname then cardname deals damage to the player equal to the number of cards they drew this way"
+]

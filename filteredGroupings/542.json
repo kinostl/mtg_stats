@@ -1,0 +1,17 @@
+[
+    "at the beginning of the upkeep of enchanted land's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted enchantment's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller that player may pay any amount of mana cardname deals n damage to that player prevent x of that damage where x is the amount of mana that player paid this way",
+    "at the beginning of the upkeep of enchanted creature's controller that player loses n life",
+    "at the beginning of each upkeep tap enchanted creature",
+    "at the beginning of the upkeep of enchanted enchantment's controller that player may pay any amount of mana cardname deals n damage to that player prevent x of that damage where x is the amount of mana that player paid this way",
+    "at the beginning of the upkeep of enchanted creature's controller that player may pay genericmana if they don't cardname deals n damage to that player and you tap that creature",
+    "at the beginning of the upkeep of enchanted permanent's controller that player loses n life",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player",
+    "cardname deals n damage to any target",
+    "cardname deals x damage to any target",
+    "cardname deals n damage to each opponent",
+    "cardname deals n damage to each player",
+    "cardname deals nn damage to any target"
+]

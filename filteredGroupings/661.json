@@ -1,0 +1,10 @@
+[
+    "at the beginning of your end step discard a card",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana specialmana",
+    "at the beginning of the end step sacrifice cardname",
+    "at the beginning of your upkeep sacrifice cardname unless you pay specialmana",
+    "at the beginning of your end step discard your hand",
+    "at the beginning of each end step discard your hand",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana",
+    "at the beginning of your end step you may pay genericmana specialmana and sacrifice a nonland permanent if you do reveal cards from the top of your library until you reveal a nonland permanent card put that card onto the battlefield and the rest on the bottom of your library in a random order"
+]

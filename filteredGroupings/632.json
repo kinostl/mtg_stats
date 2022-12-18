@@ -1,0 +1,18 @@
+[
+    "at the beginning of your upkeep look at the top card of your library you may put that card into your graveyard",
+    "at the beginning of your upkeep look at the top two cards of your library put any number of them into your graveyard and the rest back on top of your library in any order",
+    "at the beginning of your upkeep reveal the top card of your library and put that card into your hand you lose life equal to its mana value",
+    "at the beginning of your upkeep look at the top two cards of your library you may sacrifice cardname and pay genericmana specialmana specialmana if you do put one of those cards into your hand if you don't put one of those cards on the bottom of your library",
+    "at the beginning of your upkeep choose one",
+    "at the beginning of your upkeep exile a card from your graveyard",
+    "at the beginning of your upkeep each player reveals the top card of their library if all cards revealed this way are creature cards put those cards onto the battlefield under their owners' control",
+    "at the beginning of your upkeep you may look at the top card of your library if it's a creature card you may reveal it and put a quest counter on cardname",
+    "at the beginning of your upkeep exile the top card of each opponent's library until end of turn you may cast spells from among those exiled cards and you may spend mana as though it were mana of any color to cast those spells",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep you may look at the top card of target opponent's library if you do you may put that card on the bottom of that player's library",
+    "at the beginning of your upkeep look at the top card of your library if it's a land card you may put it onto the battlefield",
+    "at the beginning of your upkeep you may look at the top three cards of your library then put them back in any order",
+    "at the beginning of each opponent's upkeep that player reveals the top card of their library if it's a creature card the player puts the card into their graveyard and cardname becomes a copy of that card if it does it loses this ability",
+    "at the beginning of your end step you may manifest the top card of your library put it onto the battlefield face down as a n n creature turn it face up any time for its mana cost if it's a creature card",
+    "at the beginning of your upkeep exile the top card of your library"
+]

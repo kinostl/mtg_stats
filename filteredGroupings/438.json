@@ -1,0 +1,12 @@
+[
+    "at the beginning of the upkeep of enchanted land's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted enchantment's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals x damage to that player where x is the number of infection counters on cardname",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller that player loses n life",
+    "at the beginning of each upkeep tap enchanted creature",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player unless they sacrifice that artifact",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player",
+    "cardname deals x damage to any target",
+    "cardname deals n damage to each player"
+]

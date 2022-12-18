@@ -1,0 +1,12 @@
+[
+    "as long as enchanted permanent is a creature it has lifelink",
+    "as long as enchanted creature is a human it has first strike",
+    "as long as enchanted permanent is a creature it has flying",
+    "as long as enchanted creature is a human it has trample",
+    "as long as enchanted permanent is a creature it has deathtouch",
+    "as long as enchanted creature is a wizard it has specialmana this creature deals n damage to target creature",
+    "enchanted creature has specialmana this creature deals n damage to any target",
+    "enchanted creature has haste and specialmana this creature deals n damage to any target",
+    "enchanted creature is a flagbearer",
+    "enchanted creature has specialmana this creature deals n damage to target creature"
+]

@@ -1,0 +1,11 @@
+[
+    "at the beginning of each player's upkeep that player gains control of cardname",
+    "at the beginning of your upkeep choose one",
+    "at the beginning of each player's upkeep that player may choose any number of tapped basecolor creatures they control and pay genericmana for each creature chosen this way if the player does untap those creatures",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player may choose any number of tapped creatures without flying they control and pay genericmana for each creature chosen this way if the player does untap those creatures",
+    "at the beginning of each player's upkeep that player may choose any number of tapped nongreen creatures they control and pay genericmana for each creature chosen this way if the player does untap those creatures",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player may choose any number of tapped basecolor creatures they control and pay specialmana for each creature chosen this way if the player does untap those creatures",
+    "flying"
+]

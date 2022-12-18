@@ -1,0 +1,17 @@
+[
+    "all creatures get minus n minus n until end of turn",
+    "all nonsnow creatures get minus x minus x until end of turn where x is the number of snow permanents you control",
+    "all creatures get plus x minus x until end of turn",
+    "all creatures get minus x minus x until end of turn",
+    "all creatures get minus x minus x until end of turn where x is the sacrificed creature's power",
+    "attacking creatures get minus n minus n until end of turn",
+    "n all creatures get minus n minus n until end of turn",
+    "nonartifact creatures get minus n minus n until end of turn",
+    "nonblack creatures get minus n minus n until end of turn",
+    "nonwhite creatures get minus n minus n until end of turn",
+    "target creature gets minus x minus x until end of turn",
+    "target creature gets plus x plus x until end of turn where x is the number of lands you control",
+    "target creature gets minus x minus x until end of turn where x is the number of cards in your hand",
+    "target creature gets minus x minus x until end of turn where x is the number of cards in your graveyard",
+    "target creature gets minus x minus x until end of turn where x is the number of zombies on the battlefield"
+]

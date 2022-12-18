@@ -1,0 +1,20 @@
+[
+    "at the beginning of your upkeep put a plus n plus n counter on enchanted creature",
+    "at the beginning of each player's upkeep that player may put a plus n plus n counter on target creature of their choice",
+    "at the beginning of each player's upkeep that player discards a card at random",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player loses n life",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player sacrifices a nonminus zombie creature",
+    "at the beginning of each player's upkeep that player sacrifices a nonbasic land",
+    "counter target creature spell",
+    "genericmana specialmana put a plus n plus n counter on enchanted creature",
+    "n put a plus n plus n counter on target creature",
+    "n a creature",
+    "pay n life put a plus n plus n counter on target creature",
+    "put a minus n minus n counter on target creature",
+    "put a plus n plus n counter on target creature",
+    "put two plus n plus n counters on target creature",
+    "put a plus n plus n counter on target creature and untap it",
+    "put two plus n plus n counters on target permanent"
+]

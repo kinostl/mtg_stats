@@ -1,0 +1,8 @@
+[
+    "at the beginning of each player's upkeep that player gains control of cardname",
+    "at the beginning of each player's upkeep that player chooses target player who has more life than they do and is their opponent the first player may have cardname deal n damage to the second player",
+    "at the beginning of each player's upkeep that player chooses target player who controls more lands than they do and is their opponent the first player may search their library for a basic land card put that card onto the battlefield then shuffle",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player chooses target player who controls more creatures than they do and is their opponent the first player may reveal cards from the top of their library until they reveal a creature card if the first player does that player puts that card onto the battlefield and all other cards revealed this way into their graveyard",
+    "at the beginning of each player's upkeep that player untaps a land they control"
+]

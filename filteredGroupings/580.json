@@ -1,0 +1,12 @@
+[
+    "at the beginning of each end step if a planeswalker entered the battlefield under your control this turn create a n n basecolor zombie creature token",
+    "at the beginning of each end step if a planeswalker entered the battlefield under your control this turn cardname deals n damage to each opponent",
+    "at the beginning of each end step if you drew two or more cards this turn you may put a quest counter on cardname",
+    "at the beginning of each end step remove all depletion counters from cardname",
+    "at the beginning of your end step discard your hand",
+    "at the beginning of each end step your life total becomes n",
+    "at the beginning of each opponent's end step if you didn't lose life this turn you may put a quest counter on cardname damage causes loss of life",
+    "at the beginning of each end step discard your hand",
+    "discard your hand",
+    "i discard your hand"
+]

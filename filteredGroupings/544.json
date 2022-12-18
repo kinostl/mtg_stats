@@ -1,0 +1,22 @@
+[
+    "at the beginning of your end step discard a card",
+    "at the beginning of the end step sacrifice cardname",
+    "at the beginning of your upkeep cardname deals n damage to you",
+    "at the beginning of each player's end step cardname deals n damage to that player unless one of their opponents was dealt damage this turn",
+    "at the beginning of your end step discard your hand",
+    "at the beginning of your upkeep cardname deals n damage to any target",
+    "at the beginning of your end step cardname deals n damage to each planeswalker",
+    "at the beginning of your end step cardname deals n damage to enchanted artifact's controller",
+    "at the beginning of combat this turn cardname deals n damage to each creature",
+    "at the beginning of your upkeep cardname deals n damage to enchanted creature",
+    "at the beginning of your end step choose one",
+    "cardname deals n damage to target creature",
+    "cardname deals n damage to any target",
+    "cardname deals n damage to each creature",
+    "cardname deals n damage to each opponent",
+    "cardname deals n damage to each player",
+    "cardname deals x damage to each creature",
+    "cardname deals nn damage to each creature",
+    "cardname deals n damage to each attacking creature",
+    "cardname deals n damage to each nonartifact creature"
+]

@@ -1,0 +1,9 @@
+[
+    "all combat damage that would be dealt to you this turn by target unblocked creature is dealt to its controller instead",
+    "all damage that would be dealt to you is dealt to enchanted creature instead",
+    "all damage that would be dealt to enchanted creature is dealt to its controller instead",
+    "prevent all combat damage that would be dealt by enchanted creature",
+    "prevent all damage that would be dealt to enchanted creature",
+    "prevent all damage that would be dealt by enchanted creature",
+    "prevent all damage that would be dealt to you"
+]

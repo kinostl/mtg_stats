@@ -1,0 +1,12 @@
+[
+    "at the beginning of the end step sacrifice cardname",
+    "at the beginning of each end step discard your hand",
+    "at the beginning of each end step or when cardname leaves the battlefield destroy all tokens created with cardname they can't be regenerated",
+    "destroy all creatures",
+    "destroy all creatures they can't be regenerated",
+    "destroy all artifacts they can't be regenerated",
+    "destroy all basecolor creatures they can't be regenerated",
+    "when cardname leaves the battlefield exile all tokens created with cardname",
+    "when cardname leaves the battlefield destroy all tokens created with cardname they can't be regenerated",
+    "when cardname leaves the battlefield destroy all skeleton tokens they can't be regenerated"
+]

@@ -1,0 +1,16 @@
+[
+    "at the beginning of each upkeep if an opponent lost life last turn put a plus n plus n counter on target creature you control",
+    "counter target creature spell",
+    "enchant creature you control",
+    "genericmana specialmana put a plus n plus n counter on enchanted creature",
+    "genericmana specialmana specialmana put a plus n plus n counter on target creature you control",
+    "n put a plus n plus n counter on target creature",
+    "n a creature",
+    "pay n life put a plus n plus n counter on target creature",
+    "put a minus n minus n counter on target creature",
+    "put a plus n plus n counter on target creature",
+    "put a plus n plus n counter on each creature you control",
+    "put two plus n plus n counters on target creature",
+    "put two plus n plus n counters on target permanent",
+    "put a plus n plus n counter on target creature you control untap that creature"
+]

@@ -1,0 +1,16 @@
+[
+    "at the beginning of each player's upkeep that player returns a creature they control to its owner's hand",
+    "at the beginning of each player's upkeep that player gains control of cardname",
+    "at the beginning of each player's upkeep that player discards a card at random",
+    "at the beginning of each player's upkeep if that player controls a plains they gain n life",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player reveals a card at random from their hand if it's a land card the player puts it onto the battlefield otherwise the player casts it without paying its mana cost if able",
+    "at the beginning of each player's upkeep that player loses n life",
+    "at the beginning of each player's upkeep that player mills a card then they create x n n basecolor minion creature tokens where x is the milled card's mana value",
+    "at the beginning of each player's upkeep that player chooses target player who controls more creatures than they do and is their opponent the first player may reveal cards from the top of their library until they reveal a creature card if the first player does that player puts that card onto the battlefield and all other cards revealed this way into their graveyard",
+    "at the beginning of each player's upkeep that player sacrifices a basecolor or basecolor permanent",
+    "at the beginning of each player's upkeep that player untaps a land they control",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player sacrifices a nonminus zombie creature",
+    "at the beginning of each player's upkeep that player sacrifices a nonbasic land"
+]

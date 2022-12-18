@@ -1,0 +1,8 @@
+[
+    "at the beginning of your upkeep remove an intervention counter from cardname",
+    "at the beginning of your upkeep remove a time counter from cardname if there are no time counters on cardname sacrifice it",
+    "at the beginning of your upkeep put a tide counter on cardname",
+    "at the beginning of your upkeep put a growth counter on cardname",
+    "at the beginning of your upkeep remove all vortex counters from cardname",
+    "at the beginning of your upkeep put a time counter on cardname"
+]

@@ -1,0 +1,13 @@
+[
+    "at the beginning of your upkeep you may put a verse counter on cardname",
+    "at the beginning of your upkeep put a hunger counter on cardname then destroy cardname if it has five or more hunger counters on it",
+    "at the beginning of your upkeep put a lore counter on cardname then draw a card for each lore counter on cardname",
+    "at the beginning of your upkeep you may put a treasure counter on cardname",
+    "at the beginning of your upkeep put a plus n plus n counter on enchanted creature if it attacked or blocked since your last upkeep otherwise remove a plus n plus n counter from it",
+    "at the beginning of each player's end step put a charge counter on cardname for each untapped land that player controls",
+    "at the beginning of each upkeep put a plague counter on cardname",
+    "at the beginning of each upkeep put a strife counter on cardname",
+    "at the beginning of your upkeep put a tide counter on cardname",
+    "at the beginning of your upkeep put a growth counter on cardname",
+    "at the beginning of your upkeep put a time counter on cardname"
+]

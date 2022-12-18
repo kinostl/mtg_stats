@@ -1,0 +1,10 @@
+[
+    "at the beginning of each player's upkeep that player gains control of cardname",
+    "at the beginning of each player's upkeep that player chooses a color until end of turn lands tapped for mana produce mana of the chosen color instead of any other color",
+    "at the beginning of each player's upkeep that player discards a card at random",
+    "at the beginning of each player's upkeep that player sacrifices a land",
+    "at the beginning of each player's upkeep that player loses n life",
+    "at the beginning of each player's upkeep that player discards a card",
+    "at the beginning of each player's upkeep that player sacrifices a nonminus zombie creature",
+    "at the beginning of each player's upkeep that player sacrifices a nonbasic land"
+]

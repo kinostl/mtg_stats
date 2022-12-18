@@ -1,0 +1,8 @@
+[
+    "at the beginning of the upkeep of enchanted land's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted enchantment's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals damage equal to that creature's power to that player unless they sacrifice another creature",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player unless they sacrifice that artifact",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player"
+]

@@ -1,0 +1,8 @@
+[
+    "at the beginning of the end step return cardname to its owner's hand",
+    "at the beginning of the end step sacrifice cardname",
+    "genericmana specialmana return cardname to its owner's hand",
+    "return cardname to its owner's hand",
+    "specialmana return cardname to its owner's hand",
+    "specialmana specialmana return cardname to its owner's hand"
+]

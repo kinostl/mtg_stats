@@ -1,0 +1,18 @@
+[
+    "all creatures get plus n plus n until end of turn",
+    "at the beginning of each upkeep count the number of permanents if the number is odd until end of turn basecolor creatures get plus n plus n and whenever a player taps a baseland for mana that player adds an additional specialmana if the number is even until end of turn basecolor creatures get minus n minus n and if a player taps a baseland for mana that baseland produces colorless mana instead of any other type",
+    "attacking creatures get plus n plus n until end of turn",
+    "basecolor creatures get plus n plus n",
+    "basecolor creatures get plus n plus n until end of turn",
+    "basecolor creatures you control get plus n plus n",
+    "blocking creatures get plus n plus n until end of turn",
+    "creature tokens get plus n plus n",
+    "creatures with flying get plus n plus n",
+    "creatures you control get plus n plus n",
+    "enchanted creature gets plus n plus n and is basecolor",
+    "goblin creatures get plus n plus n",
+    "n a creature",
+    "until end of turn whenever a player taps a baseland for mana that player adds an additional specialmana",
+    "until end of turn whenever a player taps an baseland for mana that player adds an additional specialmana",
+    "whenever a baseland is tapped for mana its controller adds an additional specialmana"
+]

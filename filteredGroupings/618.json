@@ -1,0 +1,16 @@
+[
+    "at the beginning of the upkeep of enchanted creature's controller that player may discard a card at random if the player does untap that creature",
+    "at the beginning of the upkeep of enchanted creature's controller that player sacrifices that creature unless they pay genericmana",
+    "at the beginning of the upkeep of enchanted land's controller destroy that land unless that player pays genericmana or n life",
+    "at the beginning of the upkeep of enchanted creature's controller that player may pay genericmana specialmana if the player does untap that creature",
+    "at the beginning of the upkeep of enchanted creature's controller put a minus n minus n counter on that creature",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals x damage to that player where x is the number of infection counters on cardname",
+    "at the beginning of the upkeep of enchanted enchantment's controller that player loses n life unless they pay genericmana",
+    "at the beginning of the upkeep of enchanted permanent's controller that player sacrifices it unless they pay specialmana where x is its mana value",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller that player may pay any amount of mana cardname deals n damage to that player prevent x of that damage where x is the amount of mana that player paid this way",
+    "at the beginning of the upkeep of enchanted creature's controller that player loses n life",
+    "at the beginning of each upkeep tap enchanted creature",
+    "at the beginning of the upkeep of enchanted permanent's controller that player loses n life",
+    "target player loses n life"
+]

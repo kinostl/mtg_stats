@@ -1,0 +1,19 @@
+[
+    "all creatures have haste",
+    "all artifacts have at the beginning of your upkeep sacrifice this artifact unless you pay genericmana",
+    "all creatures have at the beginning of your upkeep sacrifice this creature unless you pay genericmana",
+    "all creatures have at the beginning of your upkeep sacrifice this creature unless you pay n life",
+    "at the beginning of your upkeep sacrifice cardname unless you pay specialmana specialmana",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana specialmana",
+    "at the beginning of your upkeep sacrifice cardname unless you pay n life",
+    "at the beginning of your upkeep you lose n life",
+    "at the beginning of your upkeep choose one",
+    "at the beginning of your upkeep sacrifice cardname unless you sacrifice a creature",
+    "at the beginning of your upkeep sacrifice a creature",
+    "at the beginning of your upkeep sacrifice cardname unless you pay specialmana",
+    "at the beginning of your upkeep you gain n life",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana",
+    "other enchantments have at the beginning of your upkeep sacrifice this enchantment unless you pay genericmana",
+    "you gain n life"
+]

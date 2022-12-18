@@ -1,0 +1,14 @@
+[
+    "at the beginning of the end step of enchanted creature's controller cardname deals n damage to that player unless that creature attacked this turn",
+    "at the beginning of the upkeep of enchanted land's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted enchantment's controller cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted creature's controller cardname deals n damage to that player",
+    "at the beginning of each player's upkeep cardname deals n damage to that player",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player unless they sacrifice that artifact",
+    "at the beginning of the upkeep of enchanted artifact's controller cardname deals n damage to that player",
+    "cardname deals n damage to target creature",
+    "cardname deals n damage to any target",
+    "cardname deals n damage to each creature",
+    "cardname deals n damage to each opponent",
+    "cardname deals n damage to each player"
+]

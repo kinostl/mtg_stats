@@ -1,0 +1,22 @@
+[
+    "as long as cardname is equipped it has haste",
+    "as long as equipped creature is a human it has lifelink",
+    "as long as cardname is monstrous it has hexproof it can't be the target of spells or abilities your opponents control",
+    "as long as equipped creature is legendary it has hexproof it can't be the target of spells or abilities your opponents control",
+    "cardname can't be the target of basecolor or basecolor spells your opponents control",
+    "cardname can't be the target of abilities your opponents control",
+    "cardname can't be the target of aura spells",
+    "cardname has hexproof as long as it's untapped it can't be the target of spells or abilities your opponents control",
+    "creatures can't be the targets of spells",
+    "enchanted creature has shroud it can't be the target of spells or abilities",
+    "enchanted land has shroud it can't be the target of spells or abilities",
+    "enchanted creature can't be the target of spells or abilities your opponents control",
+    "enchanted artifact has shroud it can't be the target of spells or abilities",
+    "equipped creature has haste and shroud it can't be the target of spells or abilities",
+    "equipped creature has shroud it can't be the target of spells or abilities",
+    "hexproof this creature can't be the target of spells or abilities your opponents control",
+    "hexproof",
+    "shroud this creature can't be the target of spells or abilities",
+    "shroud this enchantment can't be the target of spells or abilities",
+    "you have hexproof you can't be the target of spells or abilities your opponents control"
+]

@@ -1,0 +1,10 @@
+[
+    "all creatures get minus n minus n until end of turn exile all creature cards in all graveyards that were put there from the battlefield this turn if a creature would die this turn exile it instead",
+    "all creatures get plus n plus n until end of turn",
+    "all nonsnow creatures get minus x minus x until end of turn where x is the number of snow permanents you control",
+    "all creatures get minus n minus n until end of turn scry n look at the top card of your library you may put that card on the bottom of your library",
+    "all creatures get plus x minus x until end of turn",
+    "all creatures get minus x minus x until end of turn",
+    "all creatures get plus n minus n until end of turn",
+    "target creature gets plus x plus x until end of turn"
+]

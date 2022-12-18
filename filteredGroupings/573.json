@@ -1,0 +1,5 @@
+[
+    "at the beginning of each player's end step if that player didn't tap any nonland permanents that turn cardname deals n damage to that player",
+    "at the beginning of each player's end step if that player didn't cast a spell this turn cardname deals n damage to that player",
+    "cardname deals n damage to target creature"
+]

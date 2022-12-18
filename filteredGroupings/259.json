@@ -1,0 +1,20 @@
+[
+    "as long as enchanted permanent is a creature it has lifelink",
+    "as long as enchanted permanent is an equipment it has equipped creature has lifelink",
+    "as long as enchanted creature is basecolor it gets plus n plus n",
+    "as long as enchanted creature is basecolor it gets plus n plus n and has trample",
+    "as long as enchanted permanent is a creature it gets plus n plus n and has trample",
+    "as long as enchanted permanent is an equipment it has equipped creature gets plus n plus n and has trample",
+    "as long as enchanted permanent is a creature it has flying",
+    "as long as enchanted permanent is an equipment it has equipped creature has flying",
+    "as long as enchanted permanent is a creature it gets plus n plus n and has haste",
+    "as long as enchanted permanent is an equipment it has equipped creature gets plus n plus n and has haste",
+    "as long as enchanted permanent is a creature it has deathtouch",
+    "as long as enchanted permanent is an equipment it has equipped creature has deathtouch",
+    "creature tokens get plus n plus n",
+    "enchanted creature gets plus n plus n",
+    "enchanted creature gets plus n plus n and has trample",
+    "enchanted creature gets plus nn plus nn",
+    "enchanted permanent is legendary",
+    "trample"
+]

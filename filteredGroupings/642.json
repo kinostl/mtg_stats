@@ -1,0 +1,13 @@
+[
+    "at the beginning of your upkeep cardname deals n damage to you",
+    "at the beginning of each player's upkeep cardname deals n damage to them",
+    "at the beginning of each player's upkeep cardname deals n damage to that player",
+    "at the beginning of your upkeep cardname deals n damage to any target",
+    "at the beginning of the chosen player's upkeep cardname deals n damage to that player unless they pay genericmana for each vortex counter on cardname",
+    "at the beginning of your upkeep cardname deals n damage to enchanted creature",
+    "cardname deals n damage to target creature",
+    "cardname deals n damage to any target",
+    "cardname deals n damage to each creature",
+    "cardname deals n damage to each opponent",
+    "cardname deals n damage to each player"
+]

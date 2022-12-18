@@ -1,0 +1,17 @@
+[
+    "at the beginning of your upkeep cardname deals x damage to target opponent where x is the number of cards in your hand minus the number of cards in that player's hand",
+    "at the beginning of your upkeep choose one",
+    "at the beginning of your upkeep cardname deals n damage to you",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep cardname deals n damage to any target",
+    "at the beginning of your upkeep cardname deals n damage to enchanted creature",
+    "cardname deals n damage to target creature",
+    "cardname deals x damage to target creature",
+    "cardname deals n damage to any target",
+    "cardname deals x damage to any target",
+    "cardname deals x damage to each of x targets",
+    "cardname deals n damage to each opponent",
+    "cardname deals x damage to each creature",
+    "cardname deals nn damage to target creature",
+    "cardname deals nn damage to any target"
+]

@@ -1,0 +1,6 @@
+[
+    "at the beginning of the upkeep of enchanted creature's controller that player sacrifices that creature unless they pay genericmana",
+    "at the beginning of the upkeep of enchanted land's controller destroy that land unless that player pays genericmana or n life",
+    "at the beginning of the upkeep of enchanted creature's controller that player loses n life",
+    "at the beginning of the upkeep of enchanted permanent's controller that player loses n life"
+]

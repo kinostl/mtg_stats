@@ -1,0 +1,17 @@
+[
+    "at the beginning of the next end step destroy all nonminus wall creatures that player controls that didn't attack this turn ignore this effect for each creature the player didn't control continuously since the beginning of the turn",
+    "at the beginning of the end step sacrifice cardname",
+    "creatures can't attack this turn",
+    "destroy all creatures",
+    "destroy all nonwhite creatures",
+    "destroy all nontoken creatures",
+    "destroy all dragon creatures",
+    "destroy all nonminus dragon creatures",
+    "destroy all small creatures",
+    "destroy all medium creatures",
+    "destroy all large creatures",
+    "destroy all tapped creatures",
+    "destroy all basecolor creatures",
+    "destroy all nonenchantment creatures",
+    "destroy all nonland creatures"
+]

@@ -1,0 +1,6 @@
+[
+    "any number of target players each discard a number of cards equal to the highest mana value among permanents you control",
+    "any number of target players each gain life equal to the highest mana value among permanents you control",
+    "draw cards equal to the highest mana value among permanents you control",
+    "draw cards equal to the highest mana value among artifacts you control"
+]

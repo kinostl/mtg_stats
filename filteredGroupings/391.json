@@ -1,0 +1,14 @@
+[
+    "at the beginning of your upkeep put a plus n plus n counter on enchanted creature if it attacked or blocked since your last upkeep otherwise remove a plus n plus n counter from it",
+    "at the beginning of your upkeep put a plus n plus n counter on enchanted creature",
+    "at the beginning of your upkeep put a minus n minus n counter on enchanted creature",
+    "at the beginning of your upkeep sacrifice a creature",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep put a tide counter on cardname",
+    "at the beginning of your upkeep put a growth counter on cardname",
+    "at the beginning of your upkeep put a time counter on cardname",
+    "genericmana specialmana put a minus n minus n counter on enchanted creature",
+    "put a minus n minus n counter on target creature",
+    "put a plus n plus n counter on target creature",
+    "put a minus n minus n counter on each attacking creature"
+]

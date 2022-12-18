@@ -1,0 +1,14 @@
+[
+    "at the beginning of your upkeep look at the top card of your library you may put that card into your graveyard",
+    "at the beginning of your upkeep sacrifice cardname unless you pay specialmana specialmana",
+    "at the beginning of your upkeep look at the top two cards of your library you may sacrifice cardname and pay genericmana specialmana specialmana if you do put one of those cards into your hand if you don't put one of those cards on the bottom of your library",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana specialmana",
+    "at the beginning of your upkeep sacrifice cardname unless you pay specialmana",
+    "at the beginning of your upkeep scry n",
+    "at the beginning of your upkeep mill two cards",
+    "at the beginning of your upkeep you may mill two cards",
+    "at the beginning of your upkeep exile the top card of your library",
+    "at the beginning of your upkeep sacrifice cardname unless you pay genericmana",
+    "genericmana specialmana specialmana choose one",
+    "kicker genericmana specialmana specialmana"
+]

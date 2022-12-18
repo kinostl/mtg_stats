@@ -1,0 +1,11 @@
+[
+    "as long as enchanted permanent is a creature it has lifelink",
+    "as long as enchanted permanent is an equipment it has equipped creature has lifelink",
+    "as long as enchanted permanent is a creature it has flying",
+    "as long as enchanted permanent is an equipment it has equipped creature has flying",
+    "as long as enchanted permanent is an equipment it has equipped creature gets plus n plus n and has haste",
+    "as long as enchanted permanent is a creature it has deathtouch",
+    "as long as enchanted permanent is an equipment it has equipped creature has deathtouch",
+    "deathtouch",
+    "enchanted permanent is legendary"
+]
