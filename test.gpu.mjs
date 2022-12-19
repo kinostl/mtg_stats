@@ -105,14 +105,25 @@ const gpuGroups = gpu.createKernel(
   }
 )
 
-const positions = gpuPositions(
-  gpuReadySentences,
-  gpuReadySentences,
-  sentenceLengths
+const sortIntoGroups = gpu.combineKernels(
+  gpuPositions,
+  gpuScores,
+  gpuMatches,
+  gpuGroups,
+  function (gpuReadySentences, sentenceLengths) {
+    const positions = gpuPositions(
+      gpuReadySentences,
+      gpuReadySentences,
+      sentenceLengths
+    )
+    const points = gpuScores(positions)
+    const matches = gpuMatches(points, sentenceLengths)
+    const groups = gpuGroups(matches)
+    return groups
+  }
 )
-const points = gpuScores(positions)
-const matches = gpuMatches(points, sentenceLengths)
-const groups = gpuGroups(matches)
+
+const groups = sortIntoGroups(gpuReadySentences, sentenceLengths)
 const decodedGroups = groups.map(group =>
   [...group].map(_sentence => sentences[_sentence]).filter(o => o)
 )
