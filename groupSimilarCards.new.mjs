@@ -2,7 +2,7 @@ import fs from 'node:fs/promises'
 import cliProgress from 'cli-progress'
 
 const groupMin = 3
-const matchMin = 0.7
+const matchMin = 0.6
 const blankMin = 0.5
 const destinationPath = './templates'
 
