@@ -1,7 +1,13 @@
 import { GPU } from 'gpu.js'
-import sentences from './zip_codes.mjs'
+//import sentences from './zip_codes.mjs'
 
 const gpu = new GPU()
+const sentences = [
+  'hello moon',
+  'hello world',
+  'goodnight moon',
+  'goodnight world'
+]
 
 const sentenceLengths = sentences.map(sentence => sentence.length)
 const largestSentence = Math.max(...sentenceLengths)
@@ -11,9 +17,14 @@ const paddedSentences = sentences.map(sentence =>
 const gpuReadySentences = paddedSentences.map(sentence =>
   [...sentence].map(letter => letter.charCodeAt(0))
 )
+const gpuReadySentenceLengths = gpuReadySentences.map(
+  sentence => sentence.length
+)
 
 const gpuPositions = gpu.createKernel(
-  function (sentence, sentences) {
+  function (sentence, sentences, sentenceLengths) {
+    const realLength = sentenceLengths[this.thread.y]
+    if (this.thread.x >= realLength) return -2
     const letter = sentence[this.thread.y][this.thread.x]
 
     if (letter === 32) {
@@ -40,9 +51,83 @@ const gpuPositions = gpu.createKernel(
   }
 )
 
-const positions = gpuPositions(gpuReadySentences, gpuReadySentences)
+const gpuScores = gpu.createKernel(
+  function (positions) {
+    let points = 0
+    for (let i = 0; i < this.constants.sentenceLength; i++) {
+      const letter = positions[this.thread.y][this.thread.x][i]
+      const nextLetter = positions[this.thread.y][this.thread.x][i + 1]
+      const hasNextLetter =
+        i + 1 < this.constants.sentenceLength && nextLetter !== -2
+      if (
+        (hasNextLetter && letter + 1 === nextLetter) ||
+        (hasNextLetter && nextLetter > -1 && letter === -3) ||
+        (!hasNextLetter && letter > -1) ||
+        (i === 0 && letter > -1)
+      ) {
+        points++
+      }
+    }
+    return points
+  },
+  {
+    output: [gpuReadySentences.length, gpuReadySentences.length],
 
-console.log(positions)
+    constants: {
+      sentenceLength: largestSentence
+    }
+  }
+)
+
+const gpuMatches = gpu.createKernel(
+  function (points, sentenceLengths) {
+    const score =
+      points[this.thread.y][this.thread.x] / sentenceLengths[this.thread.y]
+    if (score < 0.5) return 0
+    return 1
+  },
+  {
+    output: [gpuReadySentences.length, gpuReadySentences.length],
+    constants: {
+      sentenceLength: largestSentence
+    }
+  }
+)
+
+const gpuGroups = gpu.createKernel(
+  function (matches) {
+    const match = matches[this.thread.y][this.thread.x]
+    if (match > 0) return this.thread.x
+    return -1
+  },
+  {
+    output: [gpuReadySentences.length, gpuReadySentences.length]
+  }
+)
+
+const positions = gpuPositions(
+  gpuReadySentences,
+  gpuReadySentences,
+  sentenceLengths
+)
+const points = gpuScores(positions)
+const matches = gpuMatches(points, sentenceLengths)
+const groups = gpuGroups(matches)
+const decodedGroups = groups.map(group =>
+  [...group].map(_sentence => sentences[_sentence]).filter(o => o)
+)
+
+console.log(decodedGroups)
+
+/*
+const matches = sentences.map((sentence, i) => {
+  return points[i].map(point => {
+    const score = point / sentence.length
+    if (score < 0.5) return 0
+    return 1
+  })
+})
+*/
 
 /*
 const positions = sentences.map(sentence => {
@@ -66,6 +151,46 @@ const positions = sentences.map(sentence => {
     return positions
   })
 })
+
+const points = positions.map(_positions => {
+  return _positions.map(__positions => {
+    return __positions.reduce((_points, letter, i, arr) => {
+      const nextLetter = arr[i + 1]
+      if (
+        (nextLetter && letter + 1 === nextLetter) ||
+        (nextLetter && nextLetter > -1 && letter === -3) ||
+        (!nextLetter && letter > -1) ||
+        (i === 0 && letter > -1)
+      ) {
+        _points++
+      }
+      return _points
+    }, 0)
+  })
+})
+
+const matches = sentences.map((sentence, i) => {
+  return points[i].map(point => {
+    const score = point / sentence.length
+    if (score < 0.5) return 0
+    return 1
+  })
+})
+
+const groups = matches.map(_matches => {
+  return _matches.reduce((_group, _match, i) => {
+    if (_match > 0) _group.push(sentences[i])
+    return _group
+  }, [])
+})
+
+const decodedGroups = groups.map(group => {
+  return group.map(_sentence => {
+    return String.fromCharCode(..._sentence)
+  })
+})
+
+console.log(decodedGroups)
 
 */
 
