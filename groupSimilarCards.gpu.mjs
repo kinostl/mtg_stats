@@ -41,9 +41,8 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
-  const height = Math.floor(maxTextureSize / longestSentenceWords)
-  console.log(maxTextureSize)
-  console.log(width, height, width * height)
+  const height = Math.floor(Math.sqrt(maxTextureSize))
+  const depth = height
 
   const buildTemplates = gpu.createKernel(
     function (sentences, wordCounts) {
@@ -57,13 +56,13 @@ export default function (rawSentences) {
       return 0
     },
     {
-      output: [width, height, height]
+      output: [width, height, depth]
     }
   )
 
   const templates = buildTemplates(
     indexedSentences.slice(0, height),
-    wordCounts.slice(0, height)
+    wordCounts.slice(0, depth)
   )
   const filteredTemplates = [...templates]
     .flat()
