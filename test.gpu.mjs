@@ -1,8 +1,9 @@
-import { GPU, input, Input } from 'gpu.js'
-//import sentences from './zip_codes.mjs'
+import { GPU } from 'gpu.js'
+import rawSentences from './zip_codes.mjs'
 
-const gpu = new GPU({ mode: 'dev' })
+const gpu = new GPU()
 
+/*
 const sentences = [
   'goodnight and hello moon and world',
   'goodnight and hello world and moon',
@@ -17,6 +18,12 @@ const sentences = [
   'hello moon',
   'hello world'
 ]
+*/
+
+const sentences = rawSentences.map(sentence =>
+  sentence.trim().replace(/[^a-zA-Z0-9\s]/g, '')
+)
+const debugSentences = sentences
 const sentenceWords = sentences.map(sentence => sentence.split(' '))
 
 const wordCounts = sentenceWords.map(sentence => sentence.length)
@@ -29,7 +36,7 @@ const listOfWords = [
   blankFill,
   ...new Set(
     sentences
-      .join()
+      .join(' ')
       .split(' ')
       .sort((a, b) => a.length - b.length)
   )
@@ -42,8 +49,6 @@ const indexedSentences = sentenceWords.map(sentence => {
   const padArr = new Array(padCount).fill(-1)
   return [...indexedSentence, ...padArr]
 })
-
-console.log(indexedSentences)
 
 // x = sentence
 // y = word
@@ -135,20 +140,23 @@ const buildTemplates = gpu.createKernel(
 )
 
 const templates = buildTemplates(indexedSentences, wordCounts)
-const filteredTemplates = [
-  ...new Set(templates.flat().map(template => JSON.stringify([...template])))
-]
-  .map(template => JSON.parse(template))
+const filteredTemplates = [...templates]
+  .flat()
   .filter(template => template.indexOf(0) > -1)
   .filter(template => Math.max(...template) > 0)
-console.log(filteredTemplates)
-const deIndexedSentences = filteredTemplates.map(sentence =>
-  [...sentence]
-    .map(word => listOfWords[word])
-    .filter(o => o)
-    .join(' ')
-)
+const deIndexedSentences = [
+  ...new Set(
+    filteredTemplates.map(sentence =>
+      [...sentence]
+        .map(word => listOfWords[word])
+        .filter(o => o)
+        .join(' ')
+    )
+  )
+]
+
 console.log(deIndexedSentences)
+//console.log(deIndexedSentences)
 /*
 const decodedSentences = templates.map(sentence =>
   String.fromCharCode(...sentence)
