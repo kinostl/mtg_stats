@@ -41,6 +41,7 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
+  //Need to divide by two so that the garbage collector has enough memory at the end.
   const height = Math.floor(Math.sqrt(Math.pow(maxTextureSize, 2) / width))
   const depth = height
 
@@ -56,6 +57,7 @@ export default function (rawSentences) {
       return 0
     },
     {
+      optimizeFloatMemory: true,
       output: [width, height, depth]
     }
   )
@@ -64,9 +66,9 @@ export default function (rawSentences) {
     indexedSentences.slice(0, height),
     wordCounts.slice(0, depth)
   )
-  const filteredTemplates = [...templates]
+  console.log('raw templates completed')
+  const filteredTemplates = templates
     .flat()
-    .map(template => [...template])
     .map(template =>
       template.filter((x, i, a) => {
         if (i + 1 < a.length && x === 0 && a[i + 1] === 0) {
@@ -77,6 +79,7 @@ export default function (rawSentences) {
     )
     .filter(template => template.indexOf(0) > -1)
     .filter(template => Math.max(...template) > 0)
+  console.log('filtered templates completed')
 
   const deIndexedSentences = [
     ...new Set(
