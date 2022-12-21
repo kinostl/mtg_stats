@@ -41,7 +41,7 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
-  const height = Math.floor(Math.sqrt(maxTextureSize))
+  const height = Math.floor(Math.sqrt(Math.pow(maxTextureSize, 2) / width))
   const depth = height
 
   const buildTemplates = gpu.createKernel(
