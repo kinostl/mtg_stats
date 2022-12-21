@@ -5,6 +5,7 @@ const gpu = new GPU({ mode: 'dev' })
 
 const sentences = [
   'goodnight and hello moon and world',
+  'goodnight and hello world and moon',
   'goodnight moon and world',
   'goodnight moon',
   'goodnight world',
@@ -19,13 +20,13 @@ const sentences = [
 const sentenceWords = sentences.map(sentence => sentence.split(' '))
 
 const wordCounts = sentenceWords.map(sentence => sentence.length)
-const longestSentenceWords = wordCounts.reduce(
-  (longest, length) => (length > longest ? length : longest),
-  0
-)
+const longestSentenceWords = Math.max(...wordCounts)
+const averageSentenceWords =
+  (longestSentenceWords + Math.min(...wordCounts)) / 2
+const blankFill = new Array(averageSentenceWords).fill('_').join('')
 
 const listOfWords = [
-  '_',
+  blankFill,
   ...new Set(
     sentences
       .join()
