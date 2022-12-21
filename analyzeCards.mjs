@@ -40,7 +40,7 @@ const oracleCardInfo = oracleCards
 
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
-const cardSlice = uniqueOracleTexts.slice(0, 1000)
+const cardSlice = uniqueOracleTexts.slice()
 console.log('grouping similar texts...')
 
 /*

@@ -1,6 +1,7 @@
 import { GPU } from 'gpu.js'
 
 const gpu = new GPU()
+const maxTextureSize = gpu.Kernel.features.maxTextureSize
 
 export default function (rawSentences) {
   const sentences = rawSentences.map(sentence =>
@@ -39,6 +40,11 @@ export default function (rawSentences) {
     return [...indexedSentence, ...padArr]
   })
 
+  const width = longestSentenceWords
+  const height = Math.floor(maxTextureSize / longestSentenceWords)
+  console.log(maxTextureSize)
+  console.log(width, height, width * height)
+
   const buildTemplates = gpu.createKernel(
     function (sentences, wordCounts) {
       const letter = sentences[this.thread.y][this.thread.x]
@@ -51,15 +57,14 @@ export default function (rawSentences) {
       return 0
     },
     {
-      output: [
-        indexedSentences[0].length,
-        indexedSentences.length,
-        indexedSentences.length
-      ]
+      output: [width, height, height]
     }
   )
 
-  const templates = buildTemplates(indexedSentences, wordCounts)
+  const templates = buildTemplates(
+    indexedSentences.slice(0, height),
+    wordCounts.slice(0, height)
+  )
   const filteredTemplates = [...templates]
     .flat()
     .map(template => [...template])
