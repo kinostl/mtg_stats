@@ -47,6 +47,7 @@ const oracleCardInfo = oracleCards
   .flat()
   .filter(card => card)
   .sort((a, b) => a.split(' ')[0].localeCompare(b.split(' ')[0]))
+// Sorts by first word.
 
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]

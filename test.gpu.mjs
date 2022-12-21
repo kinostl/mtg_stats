@@ -1,21 +1,173 @@
-import { GPU } from 'gpu.js'
+import { GPU, input, Input } from 'gpu.js'
 //import sentences from './zip_codes.mjs'
 
-const gpu = new GPU()
+const gpu = new GPU({ mode: 'dev' })
+
 const sentences = [
-  'hello moon',
-  'hello world',
+  'goodnight and hello moon and world',
+  'goodnight moon and world',
   'goodnight moon',
-  'goodnight world'
+  'goodnight world',
+  'hello and goodnight moon',
+  'hello and goodnight world and moon',
+  'hello and goodnight world',
+  'hello moon and world',
+  'hello world and moon',
+  'hello moon',
+  'hello world'
+]
+const sentenceWords = sentences.map(sentence => sentence.split(' '))
+
+const wordCounts = sentenceWords.map(sentence => sentence.length)
+const longestSentenceWords = wordCounts.reduce(
+  (longest, length) => (length > longest ? length : longest),
+  0
+)
+
+const listOfWords = [
+  '_',
+  ...new Set(
+    sentences
+      .join()
+      .split(' ')
+      .sort((a, b) => a.length - b.length)
+  )
 ]
 
-const sentenceLengths = sentences.map(sentence => sentence.length)
-const largestSentence = Math.max(...sentenceLengths)
+const indexMap = Object.fromEntries(listOfWords.map((word, i) => [word, i]))
+const indexedSentences = sentenceWords.map(sentence => {
+  const indexedSentence = sentence.map(word => indexMap[word])
+  const padCount = longestSentenceWords - sentence.length
+  const padArr = new Array(padCount).fill(-1)
+  return [...indexedSentence, ...padArr]
+})
+
+console.log(indexedSentences)
+
+// x = sentence
+// y = word
+// if y < 0, keep
+//if x does not share a word count, keep
+//if x shares a word count and y shares an index, keep
+//if x shares a word count and y does not share an index, toss
+
+/**
+ * 3 1 2
+ * 2 1 3
+ * 3 2 1
+ * 3 2 3
+ * 3 2 1 1 2 2
+ * 1 3 2 3 2 1
+ */
+const buildTemplates = gpu.createKernel(
+  function (sentences, wordCounts) {
+    const letter = sentences[this.thread.y][this.thread.x]
+    const compLetter = sentences[this.thread.z][this.thread.x]
+    const wordCount = wordCounts[this.thread.y]
+    const compWordCount = wordCounts[this.thread.z]
+
+    if (wordCount != compWordCount) return letter
+    if (letter === compLetter) return letter
+    return 0
+    /**
+     * Score Method
+     *
+     * Step 0. If all # return word
+     * Step 1. Get X Points.
+     *  - If not all #, X++
+     * Step 2. If X Points Equal, Get Y Points
+     *  - Y++ if in Y
+     * Step 3. Calculate Y Score
+     * - Y / StrLen
+     * Step 4. Return Letter or _ based on Score
+     * - if Score > 0.9 return word
+     * - return 95 // _
+     */
+    /*
+    flood fill method.
+    const letter = sentences[this.thread.y][this.thread.x]
+    if (letter === 32) return 32
+    if (this.thread.y === this.thread.z) return letter
+    const compLetter = sentences[this.thread.z][this.thread.x]
+
+    if (this.thread.x + 1 < this.constants.strLen && this.thread.x - 1 > 0) {
+      const nextLetter = sentences[this.thread.y][this.thread.x + 1]
+      const nextCompLetter = sentences[this.thread.z][this.thread.x + 1]
+      const prevLetter = sentences[this.thread.y][this.thread.x - 1]
+      const prevCompLetter = sentences[this.thread.z][this.thread.x - 1]
+
+      if (
+        (prevLetter === 35 && nextLetter === 35) ||
+        (prevLetter === 32 && nextLetter === 35) ||
+        (prevLetter === 35 && nextLetter === 32)
+      )
+        return 95
+
+      if (
+        letter === compLetter &&
+        nextLetter === nextCompLetter &&
+        prevLetter === prevCompLetter
+      )
+        return letter
+
+      return 95
+    }
+
+    if (letter === compLetter) return letter
+
+    //step 0, iterate downwards. O
+    //step 1, only care about stuff with matching characters. If there aren't matching characters skip it. O
+    //step 2, we found something with a matching character. See how far these matches happen to the right.
+    // return all characters that are on every column in matching rows. otherwise return an underscore.
+    // if left to right is all underscores attempt right to left?
+
+    return 95
+    */
+  },
+  {
+    output: [
+      indexedSentences[0].length,
+      indexedSentences.length,
+      indexedSentences.length
+    ]
+  }
+)
+
+const templates = buildTemplates(indexedSentences, wordCounts)
+const filteredTemplates = [
+  ...new Set(templates.flat().map(template => JSON.stringify([...template])))
+]
+  .map(template => JSON.parse(template))
+  .filter(template => template.indexOf(0) > -1)
+  .filter(template => Math.max(...template) > 0)
+console.log(filteredTemplates)
+const deIndexedSentences = filteredTemplates.map(sentence =>
+  [...sentence]
+    .map(word => listOfWords[word])
+    .filter(o => o)
+    .join(' ')
+)
+console.log(deIndexedSentences)
+/*
+const decodedSentences = templates.map(sentence =>
+  String.fromCharCode(...sentence)
+)
+
+console.log(decodedSentences)
+*/
+/*
+const decodedList = templates
+  .map(template => template.map(sentence => String.fromCharCode(...sentence)))
+  .flat()
+const dedupedDecodedList = [...new Set(decodedList)]
+  .map(sentence => sentence.replaceAll('#', '').trim())
+  .filter(sentence => sentence.includes('_'))
+  .filter(sentence => /[a-z]/.test(sentence))
+console.log(dedupedDecodedList)
+*/
+/*
 const paddedSentences = sentences.map(sentence =>
   sentence.padEnd(largestSentence, ' ')
-)
-const gpuReadySentences = paddedSentences.map(sentence =>
-  [...sentence].map(letter => letter.charCodeAt(0))
 )
 const gpuReadySentenceLengths = gpuReadySentences.map(
   sentence => sentence.length
@@ -105,6 +257,32 @@ const gpuGroups = gpu.createKernel(
   }
 )
 
+/**
+[
+  [ 'hello moon' ], Not long enough, skip
+  [ 'hello world' ], Not long enough, skip
+  [ 
+    'goodnight  moon', 
+    'goodnight world',
+    'goodnight cog  ',
+ ], 
+ [
+    'hello  moon', 
+    'goodnight moon',
+ ]
+]
+
+ */
+
+/*
+const gpuTemplates = gpu.createKernel(function (groups, sentences) {
+  const letter = sentences[this.thread.x][this.thread.z]
+  const anotherLetter = sentences[this.thread.y][this.thread.z]
+
+  if (letter === anotherLetter) return letter
+  return 95 // underscore character
+})
+
 const sortIntoGroups = gpu.combineKernels(
   gpuPositions,
   gpuScores,
@@ -124,11 +302,35 @@ const sortIntoGroups = gpu.combineKernels(
 )
 
 const groups = sortIntoGroups(gpuReadySentences, sentenceLengths)
+
 const decodedGroups = groups.map(group =>
   [...group].map(_sentence => sentences[_sentence]).filter(o => o)
 )
-
 console.log(decodedGroups)
+
+/*
+function theRealDeal () {
+  if (matchList.length >= groupMin) {
+    const template = sentence.reduce((parts, word) => {
+      if (matchList.every(group => group.indexOf(word) > -1)) {
+        parts.push(word)
+      } else {
+        parts.push('BLANK')
+      }
+      return parts
+    }, [])
+    const blankPoints = template.reduce((score, part) => {
+      if (part.localeCompare('BLANK')) score++
+      return score
+    }, 0)
+    const blankScore = blankPoints / sentence.length
+    if (blankScore >= blankMin) {
+      const templateString = template.join(' ').replaceAll('BLANK', '___')
+      templates.push(templateString)
+    }
+  }
+}
+*/
 
 /*
 const matches = sentences.map((sentence, i) => {
