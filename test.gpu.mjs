@@ -155,7 +155,6 @@ const deIndexedSentences = [
   )
 ]
 
-console.log(deIndexedSentences)
 //console.log(deIndexedSentences)
 /*
 const decodedSentences = templates.map(sentence =>
