@@ -4,7 +4,10 @@ const gpu = new GPU()
 
 export default function (rawSentences) {
   const sentences = rawSentences.map(sentence =>
-    sentence.trim().replace(/[^a-zA-Z0-9\s]/g, '')
+    sentence
+      .trim()
+      .replace(/[^a-zA-Z0-9\s]/g, '')
+      .toLowerCase()
   )
   const debugSentences = sentences
   const sentenceWords = sentences.map(sentence => sentence.split(' '))

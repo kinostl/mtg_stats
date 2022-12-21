@@ -32,7 +32,6 @@ const oracleCardInfo = oracleCards
             .replaceAll(/{(.*?)}/gi, 'specialmana ')
             .replace(/\b(white|blue|black|red|green)\b/gi, 'basecolor ')
             .replace(/\b(plain|island|swamp|mountain|forest)\b/gi, 'baseland ')
-            .trim()
         )
       : ['']
   )
@@ -41,7 +40,7 @@ const oracleCardInfo = oracleCards
 
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
-const cardSlice = uniqueOracleTexts.slice(0, 500)
+const cardSlice = uniqueOracleTexts.slice(0, 1000)
 console.log('grouping similar texts...')
 
 /*
