@@ -1,6 +1,6 @@
 import { GPU } from 'gpu.js'
 
-const gpu = new GPU()
+const gpu = new GPU({ mode: 'dev' })
 const maxTextureSize = gpu.Kernel?.features?.maxTextureSize || 256
 
 export default function (rawSentences) {
@@ -41,11 +41,10 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
-  //Need to divide by two so that the garbage collector has enough memory at the end.
-  const height = Math.min(
-    indexedSentences.length,
-    Math.floor(Math.sqrt(Math.pow(maxTextureSize, 2) / width))
+  const maxTextureHeight = Math.floor(
+    Math.sqrt(Math.pow(maxTextureSize, 2) / width)
   )
+  const height = Math.min(indexedSentences.length, maxTextureHeight)
   const depth = height
 
   const buildTemplates = gpu.createKernel(
@@ -64,14 +63,59 @@ export default function (rawSentences) {
     }
   )
 
-  const flattenTemplates = gpu.createKernel(
-    function (templates) {
+  const get2DRowHashes = gpu.createKernel(
+    function (rows) {
+      const row = rows[this.thread.x]
+      let hash = 0
+      for (let i = 0; i < this.constants.strLen; i++) {
+        //31 is an arbitrary prime number
+        hash = (31 * hash + row[i]) % this.constants.arrLen
+      }
+      return hash
+    },
+    {
+      constants: { strLen: width, arrLen: height * depth },
+      output: [height * depth]
+    }
+  )
+
+  const flatten3DArray = gpu.createKernel(
+    function (arr) {
+      //More readable, makes CPU mode happy.
       const row = Math.floor(this.thread.y / this.constants.arrLim)
       const col = this.thread.y % this.constants.arrLim
-      return templates[row][col][this.thread.x]
+      return arr[row][col][this.thread.x]
     },
     {
       constants: { arrLim: height, strLen: width },
+      output: [width, height * depth]
+    }
+  )
+
+  const blankDuplicateHashes = gpu.createKernel(
+    function (hashes) {
+      const hashA = hashes[this.thread.x]
+      for (let i = this.thread.x + 1; i < this.constants.arrLen - 1; i++) {
+        const hashB = hashes[i]
+        if (hashA === hashB) return 0
+      }
+      return hashA
+    },
+    {
+      constants: { strLen: width, arrLen: height * depth },
+      output: [height * depth]
+    }
+  )
+
+  const blankDuplicateRows = gpu.createKernel(
+    function (rows, hashes) {
+      const hash = hashes[this.thread.y]
+      if (hash === 0) return 0
+      const row = rows[this.thread.y][this.thread.x]
+      return row
+    },
+    {
+      constants: { strLen: width, arrLen: height * depth },
       output: [width, height * depth]
     }
   )
@@ -104,17 +148,26 @@ export default function (rawSentences) {
   const filterTemplatesFunction = function (sentences, wordCounts) {
     debugger
     const templates = buildTemplates(sentences, wordCounts)
-    const flatTemplates = flattenTemplates(templates)
-    const filteredTemplates = zeroOutDuplicates(flatTemplates)
-    return filteredTemplates
+    const flatTemplates = flatten3DArray(templates)
+    const rowHashes = get2DRowHashes(flatTemplates)
+    const blankedHashes = blankDuplicateHashes(rowHashes)
+    const blankedRows = blankDuplicateRows(flatTemplates, blankedHashes)
+    return blankedRows
+    //const filteredTemplates = zeroOutDuplicates(flatTemplates)
+    //return filteredTemplates
   }
 
-  const getFilteredTemplates = gpu.combineKernels(
-    buildTemplates,
-    flattenTemplates,
-    zeroOutDuplicates,
-    filterTemplatesFunction
-  )
+  const getFilteredTemplates =
+    gpu.Kernel?.mode === 'gpu'
+      ? gpu.combineKernels(
+          buildTemplates,
+          flatten3DArray,
+          get2DRowHashes,
+          blankDuplicateHashes,
+          blankDuplicateRows,
+          filterTemplatesFunction
+        )
+      : filterTemplatesFunction
 
   const templates = getFilteredTemplates(
     indexedSentences.slice(0, height),
@@ -135,16 +188,12 @@ export default function (rawSentences) {
     )
   console.log('filtered templates completed')
 
-  const deIndexedSentences = [
-    ...new Set(
-      filteredTemplates.map(sentence =>
-        [...sentence]
-          .map(word => listOfWords[word])
-          .filter(o => o)
-          .join(' ')
-      )
-    )
-  ]
+  const deIndexedSentences = filteredTemplates.map(sentence =>
+    [...sentence]
+      .map(word => listOfWords[word])
+      .filter(o => o)
+      .join(' ')
+  )
   console.log(deIndexedSentences)
 
   return deIndexedSentences
