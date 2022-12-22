@@ -41,53 +41,41 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
-  const maxTextureHeight = Math.floor(Math.sqrt(maxTextureSize))
+  const maxTextureHeight = maxTextureSize
   console.log(maxTextureHeight)
   const height = Math.min(indexedSentences.length * 2, maxTextureHeight)
   const depth = height
 
+  // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
+  // (Also it will let us increase our chunk size back up to a lot.)
   const buildTemplates = gpu.createKernel(
-    function (sentences, wordCounts) {
-      const letter = sentences[this.thread.y][this.thread.x]
-      const compLetter = sentences[this.thread.z][this.thread.x]
-      const wordCount = wordCounts[this.thread.y]
-      const compWordCount = wordCounts[this.thread.z]
+    function (sentence, wordCount, sentences, wordCounts) {
+      const letter = sentence[this.thread.x]
+      const compLetter = sentences[this.thread.y][this.thread.x]
+      const compWordCount = wordCounts[this.thread.y]
 
       if (wordCount != compWordCount) return letter
       if (letter === compLetter) return letter
       return 0
     },
     {
-      output: [width, height, depth]
+      output: [width, height]
     }
   )
 
-  const get2DRowHashes = gpu.createKernel(
+  const getRowHashes = gpu.createKernel(
     function (rows) {
       let hash = 0
       for (let i = 0; i < this.constants.strLen; i++) {
         const letter = rows[this.thread.x][i]
-        //31 is an arbitrary prime number
-        hash = (31 * hash + letter) % this.constants.arrLen
+        //2 is an arbitrary prime number
+        hash += letter * 2 * i
       }
       return hash
     },
     {
-      constants: { strLen: width, arrLen: height * depth },
-      output: [height * depth]
-    }
-  )
-
-  const flatten3DArray = gpu.createKernel(
-    function (arr) {
-      //More readable, makes CPU mode happy.
-      const row = Math.floor(this.thread.y / this.constants.arrLim)
-      const col = this.thread.y % this.constants.arrLim
-      return arr[row][col][this.thread.x]
-    },
-    {
-      constants: { arrLim: height, strLen: width },
-      output: [width, height * depth]
+      constants: { strLen: width, arrLen: height },
+      output: [height]
     }
   )
 
@@ -101,8 +89,8 @@ export default function (rawSentences) {
       return hashA
     },
     {
-      constants: { strLen: width, arrLen: height * depth },
-      output: [height * depth]
+      constants: { strLen: width, arrLen: height },
+      output: [height]
     }
   )
 
@@ -114,54 +102,29 @@ export default function (rawSentences) {
       return row
     },
     {
-      constants: { strLen: width, arrLen: height * depth },
-      output: [width, height * depth]
+      constants: { strLen: width, arrLen: height },
+      output: [width, height]
     }
   )
 
-  const zeroOutDuplicates = gpu.createKernel(
-    function (templates) {
-      const sentence = templates[this.thread.y]
-      for (
-        let row = this.thread.y + 1;
-        row < this.constants.arrLen - 1;
-        row++
-      ) {
-        let score = 0
-        const compSentence = templates[row]
-        for (let col = 0; col < this.constants.strLen; col++) {
-          const letter = sentence[col]
-          const compLetter = compSentence[col]
-          if (letter === compLetter) score++
-        }
-        if (score === this.constants.strLen) return 0
-      }
-      return templates[this.thread.y][this.thread.x]
-    },
-    {
-      constants: { arrLen: height * depth, strLen: width },
-      output: [width, height * depth]
-    }
-  )
-
-  const filterTemplatesFunction = function (sentences, wordCounts) {
-    debugger
-    const templates = buildTemplates(sentences, wordCounts)
-    const flatTemplates = flatten3DArray(templates)
-    const rowHashes = get2DRowHashes(flatTemplates)
+  const filterTemplatesFunction = function (
+    sentence,
+    wordCount,
+    sentences,
+    wordCounts
+  ) {
+    const templates = buildTemplates(sentence, wordCount, sentences, wordCounts)
+    const rowHashes = getRowHashes(templates)
     const blankedHashes = blankDuplicateHashes(rowHashes)
-    const blankedRows = blankDuplicateRows(flatTemplates, blankedHashes)
+    const blankedRows = blankDuplicateRows(templates, blankedHashes)
     return blankedRows
-    //const filteredTemplates = zeroOutDuplicates(flatTemplates)
-    //return filteredTemplates
   }
 
   const getFilteredTemplates =
     gpu.Kernel?.mode === 'gpu'
       ? gpu.combineKernels(
           buildTemplates,
-          flatten3DArray,
-          get2DRowHashes,
+          getRowHashes,
           blankDuplicateHashes,
           blankDuplicateRows,
           filterTemplatesFunction
@@ -169,6 +132,8 @@ export default function (rawSentences) {
       : filterTemplatesFunction
 
   const templates = getFilteredTemplates(
+    indexedSentences[0],
+    wordCounts[0],
     indexedSentences.slice(0, height),
     wordCounts.slice(0, depth)
   )
@@ -193,7 +158,6 @@ export default function (rawSentences) {
       .filter(o => o)
       .join(' ')
   )
-  console.log(deIndexedSentences)
 
   return deIndexedSentences
 }

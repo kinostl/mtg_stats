@@ -43,7 +43,7 @@ const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 const cardSlice = uniqueOracleTexts.slice()
 console.log('grouping similar texts...')
 
-groupSimilarCards(cardSlice)
+console.log(groupSimilarCards(cardSlice))
 
 /*
 const sentences = [
