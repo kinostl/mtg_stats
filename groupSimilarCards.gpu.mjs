@@ -1,6 +1,6 @@
 import { GPU } from 'gpu.js'
 
-const gpu = new GPU({ mode: 'dev' })
+const gpu = new GPU()
 const maxTextureSize = gpu.Kernel?.features?.maxTextureSize || 256
 
 export default function (rawSentences) {
@@ -41,9 +41,7 @@ export default function (rawSentences) {
   })
 
   const width = longestSentenceWords
-  const maxTextureHeight = Math.floor(
-    Math.sqrt(Math.pow(maxTextureSize, 2) / width)
-  )
+  const maxTextureHeight = Math.floor(maxTextureSize / width / 2)
   const height = Math.min(indexedSentences.length, maxTextureHeight)
   const depth = height
 
@@ -65,11 +63,11 @@ export default function (rawSentences) {
 
   const get2DRowHashes = gpu.createKernel(
     function (rows) {
-      const row = rows[this.thread.x]
       let hash = 0
       for (let i = 0; i < this.constants.strLen; i++) {
+        const letter = rows[this.thread.x][i]
         //31 is an arbitrary prime number
-        hash = (31 * hash + row[i]) % this.constants.arrLen
+        hash = (31 * hash + letter) % this.constants.arrLen
       }
       return hash
     },

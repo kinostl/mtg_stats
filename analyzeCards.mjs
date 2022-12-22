@@ -1,6 +1,5 @@
 //import groupSimilarCards from './groupSimilarCards.mjs'
 import groupSimilarCards from './groupSimilarCards.gpu.mjs'
-/*
 import oracleCards from './oracle-cards.js'
 
 const cardTypes = [
@@ -44,9 +43,9 @@ const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 const cardSlice = uniqueOracleTexts.slice()
 console.log('grouping similar texts...')
 
-console.log(groupSimilarCards(cardSlice))
-*/
+groupSimilarCards(cardSlice)
 
+/*
 const sentences = [
   'goodnight and hello moon and world',
   'goodnight and hello world and moon',
@@ -63,3 +62,4 @@ const sentences = [
 ]
 
 groupSimilarCards(sentences)
+*/
