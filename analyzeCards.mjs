@@ -25,8 +25,8 @@ const oracleCardInfo = oracleCards
       ? card.oracle_text.split('\n').map(o =>
           o
             .replaceAll(card.name, 'cardname')
-            .replaceAll('+', 'plus ')
-            .replaceAll('-', 'minus ')
+            .replaceAll('+', ' plus ')
+            .replaceAll('-', ' minus ')
             .replace(/\d/gi, 'n')
             .replaceAll('{n}', 'genericmana ')
             .replaceAll(/{(.*?)}/gi, 'specialmana ')
