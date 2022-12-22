@@ -44,7 +44,6 @@ export default function (rawSentences) {
   const maxTextureHeight = maxTextureSize
   console.log(maxTextureHeight)
   const height = Math.min(indexedSentences.length * 2, maxTextureHeight)
-  const depth = height
 
   // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
   // (Also it will let us increase our chunk size back up to a lot.)
@@ -54,8 +53,8 @@ export default function (rawSentences) {
       const compLetter = sentences[this.thread.y][this.thread.x]
       const compWordCount = wordCounts[this.thread.y]
 
-      if (wordCount != compWordCount) return letter
-      if (letter === compLetter) return letter
+      if (wordCount != compWordCount) return compLetter
+      if (letter === compLetter) return compLetter
       return 0
     },
     {
@@ -68,9 +67,11 @@ export default function (rawSentences) {
       let hash = 0
       for (let i = 0; i < this.constants.strLen; i++) {
         const letter = rows[this.thread.x][i]
-        //2 is an arbitrary prime number
-        hash += letter * 2 * i
+        if (letter !== -1) {
+          hash += letter * Math.pow(10, this.constants.strLen - i - 1)
+        }
       }
+
       return hash
     },
     {
@@ -79,14 +80,14 @@ export default function (rawSentences) {
     }
   )
 
-  const blankDuplicateHashes = gpu.createKernel(
+  const getHashIsDuplicate = gpu.createKernel(
     function (hashes) {
       const hashA = hashes[this.thread.x]
-      for (let i = this.thread.x + 1; i < this.constants.arrLen - 1; i++) {
+      for (let i = this.thread.x + 1; i < this.constants.arrLen; i++) {
         const hashB = hashes[i]
-        if (hashA === hashB) return 0
+        if (hashA === hashB) return 1
       }
-      return hashA
+      return 0
     },
     {
       constants: { strLen: width, arrLen: height },
@@ -95,11 +96,10 @@ export default function (rawSentences) {
   )
 
   const blankDuplicateRows = gpu.createKernel(
-    function (rows, hashes) {
-      const hash = hashes[this.thread.y]
-      if (hash === 0) return 0
-      const row = rows[this.thread.y][this.thread.x]
-      return row
+    function (rows, hashIsDuplicate) {
+      const isDuplicate = hashIsDuplicate[this.thread.y] > 0
+      if (isDuplicate) return 0
+      return rows[this.thread.y][this.thread.x]
     },
     {
       constants: { strLen: width, arrLen: height },
@@ -115,8 +115,8 @@ export default function (rawSentences) {
   ) {
     const templates = buildTemplates(sentence, wordCount, sentences, wordCounts)
     const rowHashes = getRowHashes(templates)
-    const blankedHashes = blankDuplicateHashes(rowHashes)
-    const blankedRows = blankDuplicateRows(templates, blankedHashes)
+    const hashIsDuplicate = getHashIsDuplicate(rowHashes)
+    const blankedRows = blankDuplicateRows(templates, hashIsDuplicate)
     return blankedRows
   }
 
@@ -125,7 +125,7 @@ export default function (rawSentences) {
       ? gpu.combineKernels(
           buildTemplates,
           getRowHashes,
-          blankDuplicateHashes,
+          getHashIsDuplicate,
           blankDuplicateRows,
           filterTemplatesFunction
         )
@@ -135,9 +135,9 @@ export default function (rawSentences) {
     indexedSentences[0],
     wordCounts[0],
     indexedSentences.slice(0, height),
-    wordCounts.slice(0, depth)
+    wordCounts.slice(0, height)
   )
-  console.log('raw templates completed')
+  console.log('raw templates completed', templates.length)
 
   const filteredTemplates = templates
     .filter(template => template.indexOf(0) > -1)
@@ -150,7 +150,7 @@ export default function (rawSentences) {
         return true
       })
     )
-  console.log('filtered templates completed')
+  console.log('filtered templates completed', filteredTemplates.length)
 
   const deIndexedSentences = filteredTemplates.map(sentence =>
     [...sentence]
@@ -159,5 +159,5 @@ export default function (rawSentences) {
       .join(' ')
   )
 
-  return deIndexedSentences
+  return [...new Set(deIndexedSentences)]
 }
