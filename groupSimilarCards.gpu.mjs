@@ -158,8 +158,8 @@ export default function (rawSentences) {
 
   appLog('Start')
   const similarCards = new Set()
-  for (let rowId = 0; rowId < 50; rowId++) {
-    rowLog('Start Row #%d', rowId)
+  const maxRow = 50
+  for (let rowId = 0; rowId < maxRow; rowId++) {
     const row = indexedSentences[rowId]
     const rowCount = wordCounts[rowId]
     for (let chunk = 0; chunk < indexedSentences.length; chunk += height) {
@@ -192,7 +192,12 @@ export default function (rawSentences) {
         })
       chunkLog('Templates added')
     }
-    rowLog('Finish Row #%d', rowId)
+    rowLog(
+      'Finished Row #%d / %d (%d%%)',
+      rowId,
+      maxRow,
+      Math.round((rowId / maxRow) * 100)
+    )
   }
   appLog('Finish')
 
