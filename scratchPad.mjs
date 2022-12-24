@@ -1,10 +1,23 @@
+const arrs = [
+  [128, 31, 128],
+  [31, 128, 31],
+  [128, 31, 31],
+  [31, 31, 128],
+  [2, 12, 256],
+  [1, 256, 31],
+  [31, 256, 12],
+  [31, 12, 256],
+  [31, 12, 256]
+]
+
 function getHash (row, digitHashTable) {
-  let hash = 0
+  let res = 0
   for (let i = 0; i < row.length; i++) {
-    hash = 31 * hash + row[i]
+    res = (31 * res + row[i]) % arrs.length
   }
-  return hash
+  return res
 }
+
 function getHashes (rows) {
   return rows.map(row => getHash(row))
 }
@@ -46,17 +59,6 @@ function blankDuplicateRows (rows, dupes) {
   return outs
 }
 
-const arrs = [
-  [128, 31, 128],
-  [31, 128, 31],
-  [128, 31, 31],
-  [31, 31, 128],
-  [2, 12, 256],
-  [1, 256, 31],
-  [31, 256, 12],
-  [31, 12, 256],
-  [31, 12, 256]
-]
 const hashes = getHashes(arrs)
 console.log(hashes)
 const dupes = getHashIsDuplicate(hashes)

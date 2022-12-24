@@ -46,7 +46,7 @@ export default function (rawSentences) {
   const height = Math.floor(
     Math.min(indexedSentences.length * 2, maxTextureHeight * 2) / 2
   )
-  console.log(width, height, maxTextureHeight)
+  console.log(indexedSentences.length, width, height, maxTextureHeight)
 
   // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
   // (Also it will let us increase our chunk size back up to a lot.)
@@ -69,13 +69,12 @@ export default function (rawSentences) {
     function (rows) {
       let hash = 0
       for (let i = 0; i < this.constants.width; i++) {
-        hash = 31 * hash + rows[this.thread.x][i]
+        hash = (31 * hash + rows[this.thread.x][i]) % this.constants.height
       }
-
       return hash
     },
     {
-      constants: { width },
+      constants: { width, height },
       output: [height]
     }
   )
