@@ -1,6 +1,7 @@
 //import groupSimilarCards from './groupSimilarCards.mjs'
 import groupSimilarCards from './groupSimilarCards.gpu.mjs'
 import oracleCards from './oracle-cards.js'
+import fs from 'node:fs'
 
 const cardTypes = [
   'land',

@@ -67,6 +67,7 @@ export default function (rawSentences) {
       return 1
     },
     {
+      optimizeFloatMemory: true,
       output: [width, height]
     }
   )
@@ -79,6 +80,7 @@ export default function (rawSentences) {
       return 0
     },
     {
+      optimizeFloatMemory: true,
       output: [width, height, height]
     }
   )
@@ -92,6 +94,7 @@ export default function (rawSentences) {
       return total
     },
     {
+      optimizeFloatMemory: true,
       constants: { width },
       output: [height, height]
     }
@@ -105,6 +108,7 @@ export default function (rawSentences) {
       return 0
     },
     {
+      optimizeFloatMemory: true,
       constants: { width, height },
       output: [height]
     }
@@ -117,6 +121,7 @@ export default function (rawSentences) {
       return rows[this.thread.y][this.thread.x]
     },
     {
+      optimizeFloatMemory: true,
       output: [width, height]
     }
   )
@@ -148,25 +153,26 @@ export default function (rawSentences) {
       : filterTemplatesFunction
 
   const appLog = debug('app')
+  const rowLog = debug('row')
+  const chunkLog = debug('chunk')
+
   appLog('Start')
   const similarCards = new Set()
-  for (let rowId = 0; rowId < indexedSentences.length; rowId++) {
-    appLog('Start Row #%d', rowId)
-    const rowLog = debug(`Row #${rowId}`)
+  for (let rowId = 0; rowId < 50; rowId++) {
+    rowLog('Start Row #%d', rowId)
     const row = indexedSentences[rowId]
     const rowCount = wordCounts[rowId]
-    rowLog('Start')
     for (let chunk = 0; chunk < indexedSentences.length; chunk += height) {
-      const log = debug(`Chunk [${chunk} ... ${chunk + height}]`)
-      log('Get Filtered Templates')
+      chunkLog(`Chunk [${chunk} ... ${chunk + height}]`)
+      chunkLog('Get Filtered Templates')
       const templates = getFilteredTemplates(
         row,
         rowCount,
         indexedSentences.slice(chunk, chunk + height),
         wordCounts.slice(chunk, chunk + height)
       )
-      log('Raw Templates %d', templates.length)
-      const filteredTemplates = templates
+      chunkLog('Raw Templates %d', templates.length)
+      templates
         .filter(template => template.indexOf(1) > -1)
         .filter(template => Math.max(...template) > 1)
         .map(template =>
@@ -177,19 +183,16 @@ export default function (rawSentences) {
             return true
           })
         )
-
-      log('Filtered Templates %d', filteredTemplates.length)
-      const deIndexedSentences = filteredTemplates.map(sentence =>
-        [...sentence]
-          .map(word => listOfWords[word])
-          .filter(o => o)
-          .join(' ')
-      )
-      deIndexedSentences.forEach(sentence => similarCards.add(sentence))
-      log('Added deindexed sentences %o', deIndexedSentences)
+        .forEach(sentence => {
+          const deIndexedSentence = [...sentence]
+            .map(word => listOfWords[word])
+            .filter(o => o)
+            .join(' ')
+          similarCards.add(deIndexedSentence)
+        })
+      chunkLog('Templates added')
     }
-    rowLog('Finish')
-    appLog('Finish Row #%d', rowId)
+    rowLog('Finish Row #%d', rowId)
   }
   appLog('Finish')
 
