@@ -41,8 +41,8 @@ const oracleCardInfo = oracleCards
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 console.log('grouping similar texts...')
-
-console.log(groupSimilarCards(uniqueOracleTexts))
+groupSimilarCards(uniqueOracleTexts)
+//console.log(groupSimilarCards(uniqueOracleTexts))
 
 /*
 const sentences = [

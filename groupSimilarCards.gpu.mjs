@@ -44,9 +44,14 @@ export default function (rawSentences) {
   const width = longestSentenceWords
   const maxTextureHeight = maxTextureSize
   const height = Math.floor(
-    Math.min(indexedSentences.length * 2, maxTextureHeight * 2) / 2
+    Math.min(
+      (indexedSentences.length * 2) / width,
+      (maxTextureHeight * 2) / width
+    ) / 2
   )
+
   console.log(indexedSentences.length, width, height, maxTextureHeight)
+  console.log(width * height, width * height * height)
 
   // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
   // (Also it will let us increase our chunk size back up to a lot.)
@@ -65,42 +70,41 @@ export default function (rawSentences) {
     }
   )
 
-  const getRowHashes = gpu.createKernel(
-    function (rows) {
-      let hash = 0
-      for (let i = 0; i < this.constants.width; i++) {
-        hash = (31 * hash + rows[this.thread.x][i]) % this.constants.height
-      }
-      return hash
-    },
-    {
-      constants: { width, height },
-      output: [height]
-    }
-  )
-
-  const getHashDuplicates = gpu.createKernel(
-    function (hashes) {
-      const hashA = hashes[this.thread.x]
-      const hashB = hashes[this.thread.y]
-      if (this.thread.x < this.thread.y && hashA === hashB) return 1
+  const getCellDuplicates = gpu.createKernel(
+    function (sentences) {
+      const letter = sentences[this.thread.y][this.thread.x]
+      const compLetter = sentences[this.thread.z][this.thread.x]
+      if (letter === compLetter) return 1
       return 0
     },
     {
+      output: [width, height, height]
+    }
+  )
+
+  const reduceCellDuplicates = gpu.createKernel(
+    function (sentences) {
+      let total = 0
+      for (let i = 0; i < this.constants.width; i++) {
+        total += sentences[this.thread.y][this.thread.x][i]
+      }
+      return total
+    },
+    {
+      constants: { width },
       output: [height, height]
     }
   )
 
-  const reduceDuplicateHashes = gpu.createKernel(
-    function (hashMaps) {
-      let isDupe = 0
-      for (let i = 0; i < this.constants.height; i++) {
-        isDupe += hashMaps[this.thread.x][i]
+  const reduceDuplicateRows = gpu.createKernel(
+    function (sentences) {
+      for (let i = this.thread.x + 1; i < this.constants.height; i++) {
+        if (sentences[this.thread.x][i] === this.constants.width) return 1
       }
-      return isDupe
+      return 0
     },
     {
-      constants: { height },
+      constants: { width, height },
       output: [height]
     }
   )
@@ -123,10 +127,10 @@ export default function (rawSentences) {
     wordCounts
   ) {
     const templates = buildTemplates(sentence, wordCount, sentences, wordCounts)
-    const rowHashes = getRowHashes(templates)
-    const hashDuplicates = getHashDuplicates(rowHashes)
-    const isDupes = reduceDuplicateHashes(hashDuplicates)
-    const blankedRows = blankDuplicateRows(templates, isDupes)
+    const cellDuplicates = getCellDuplicates(templates)
+    const rowDuplicates = reduceCellDuplicates(cellDuplicates)
+    const duplicates = reduceDuplicateRows(rowDuplicates)
+    const blankedRows = blankDuplicateRows(templates, duplicates)
     return blankedRows
   }
 
@@ -134,9 +138,9 @@ export default function (rawSentences) {
     gpu.Kernel?.mode === 'gpu'
       ? gpu.combineKernels(
           buildTemplates,
-          getRowHashes,
-          getHashDuplicates,
-          reduceDuplicateHashes,
+          getCellDuplicates,
+          reduceCellDuplicates,
+          reduceDuplicateRows,
           blankDuplicateRows,
           filterTemplatesFunction
         )
@@ -148,7 +152,7 @@ export default function (rawSentences) {
     indexedSentences.slice(0, height),
     wordCounts.slice(0, height)
   )
-  console.log('raw templates completed', templates.length, templates)
+  console.log('raw templates completed', templates.length)
 
   const filteredTemplates = templates
     .filter(template => template.indexOf(1) > -1)
