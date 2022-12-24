@@ -42,8 +42,9 @@ export default function (rawSentences) {
 
   const width = longestSentenceWords
   const maxTextureHeight = maxTextureSize
-  console.log(maxTextureHeight)
-  const height = Math.min(indexedSentences.length * 2, maxTextureHeight)
+  const height = Math.floor(
+    Math.min(indexedSentences.length * 2, maxTextureHeight * 2) / 2
+  )
 
   // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
   // (Also it will let us increase our chunk size back up to a lot.)
@@ -80,17 +81,28 @@ export default function (rawSentences) {
     }
   )
 
-  const getHashIsDuplicate = gpu.createKernel(
+  const getHashDuplicates = gpu.createKernel(
     function (hashes) {
       const hashA = hashes[this.thread.x]
-      for (let i = this.thread.x + 1; i < this.constants.arrLen; i++) {
-        const hashB = hashes[i]
-        if (hashA === hashB) return 1
-      }
+      const hashB = hashes[this.thread.y]
+      if (this.thread.x < this.thread.y && hashA === hashB) return 1
       return 0
     },
     {
-      constants: { strLen: width, arrLen: height },
+      output: [height, height]
+    }
+  )
+
+  const reduceDuplicateHashes = gpu.createKernel(
+    function (hashMaps) {
+      let isDupe = 0
+      for (let i = 0; i < this.constants.height; i++) {
+        isDupe += hashMaps[this.thread.x][i]
+      }
+      return isDupe
+    },
+    {
+      constants: { height },
       output: [height]
     }
   )
@@ -115,8 +127,9 @@ export default function (rawSentences) {
   ) {
     const templates = buildTemplates(sentence, wordCount, sentences, wordCounts)
     const rowHashes = getRowHashes(templates)
-    const hashIsDuplicate = getHashIsDuplicate(rowHashes)
-    const blankedRows = blankDuplicateRows(templates, hashIsDuplicate)
+    const hashDuplicates = getHashDuplicates(rowHashes)
+    const isDupes = reduceDuplicateHashes(hashDuplicates)
+    const blankedRows = blankDuplicateRows(templates, isDupes)
     return blankedRows
   }
 
@@ -125,7 +138,8 @@ export default function (rawSentences) {
       ? gpu.combineKernels(
           buildTemplates,
           getRowHashes,
-          getHashIsDuplicate,
+          getHashDuplicates,
+          reduceDuplicateHashes,
           blankDuplicateRows,
           filterTemplatesFunction
         )
@@ -159,5 +173,5 @@ export default function (rawSentences) {
       .join(' ')
   )
 
-  return [...new Set(deIndexedSentences)]
+  return deIndexedSentences
 }
