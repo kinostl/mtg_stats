@@ -151,6 +151,7 @@ export default function (rawSentences) {
   appLog('Start')
   const similarCards = new Set()
   for (let rowId = 0; rowId < indexedSentences.length; rowId++) {
+    appLog('Start Row #%d', rowId)
     const rowLog = debug(`Row #${rowId}`)
     const row = indexedSentences[rowId]
     const rowCount = wordCounts[rowId]
@@ -188,8 +189,9 @@ export default function (rawSentences) {
       log('Added deindexed sentences %o', deIndexedSentences)
     }
     rowLog('Finish')
+    appLog('Finish Row #%d', rowId)
   }
   appLog('Finish')
 
-  return similarCards
+  return [...similarCards]
 }

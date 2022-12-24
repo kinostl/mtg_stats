@@ -41,4 +41,5 @@ const oracleCardInfo = oracleCards
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 console.log('grouping similar texts...')
-console.log(groupSimilarCards(uniqueOracleTexts))
+const similarCards = groupSimilarCards(uniqueOracleTexts)
+fs.writeFileSync('./similarCards.json', JSON.stringify(similarCards, null, 4))

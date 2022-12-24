@@ -1,5 +1,6 @@
 //import groupSimilarCards from './groupSimilarCards.mjs'
 import groupSimilarCards from './groupSimilarCards.gpu.mjs'
+import fs from 'node:fs'
 
 const sentences = [
   'goodnight and hello moon and world',
@@ -17,4 +18,5 @@ const sentences = [
   'hello world'
 ]
 
-console.log(groupSimilarCards(sentences))
+const similarCards = groupSimilarCards(sentences)
+fs.writeFileSync('./similarCards.json', JSON.stringify(similarCards, null, 4))
