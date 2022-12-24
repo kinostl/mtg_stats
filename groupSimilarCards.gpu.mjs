@@ -1,4 +1,5 @@
 import { GPU } from 'gpu.js'
+import debug from 'debug'
 
 const gpu = new GPU()
 const maxTextureSize = gpu.Kernel?.features?.maxTextureSize || 16384
@@ -146,35 +147,49 @@ export default function (rawSentences) {
         )
       : filterTemplatesFunction
 
-  const templates = getFilteredTemplates(
-    indexedSentences[0],
-    wordCounts[0],
-    indexedSentences.slice(0, height),
-    wordCounts.slice(0, height)
-  )
-  console.log('raw templates completed', templates.length)
+  const appLog = debug('app')
+  appLog('Start')
+  const similarCards = new Set()
+  for (let rowId = 0; rowId < indexedSentences.length; rowId++) {
+    const rowLog = debug(`Row #${rowId}`)
+    const row = indexedSentences[rowId]
+    const rowCount = wordCounts[rowId]
+    rowLog('Start')
+    for (let chunk = 0; chunk < indexedSentences.length; chunk += height) {
+      const log = debug(`Chunk [${chunk} ... ${chunk + height}]`)
+      log('Get Filtered Templates')
+      const templates = getFilteredTemplates(
+        row,
+        rowCount,
+        indexedSentences.slice(chunk, chunk + height),
+        wordCounts.slice(chunk, chunk + height)
+      )
+      log('Raw Templates %d', templates.length)
+      const filteredTemplates = templates
+        .filter(template => template.indexOf(1) > -1)
+        .filter(template => Math.max(...template) > 1)
+        .map(template =>
+          template.filter((x, i, a) => {
+            if (i + 1 < a.length && x === 1 && a[i + 1] === 1) {
+              return false
+            }
+            return true
+          })
+        )
 
-  const filteredTemplates = templates
-    .filter(template => template.indexOf(1) > -1)
-    .filter(template => Math.max(...template) > 1)
-  /*
-    .map(template =>
-      template.filter((x, i, a) => {
-        if (i + 1 < a.length && x === 0 && a[i + 1] === 0) {
-          return false
-        }
-        return true
-      })
-    )
-    */
-  console.log('filtered templates completed', filteredTemplates.length)
+      log('Filtered Templates %d', filteredTemplates.length)
+      const deIndexedSentences = filteredTemplates.map(sentence =>
+        [...sentence]
+          .map(word => listOfWords[word])
+          .filter(o => o)
+          .join(' ')
+      )
+      deIndexedSentences.forEach(sentence => similarCards.add(sentence))
+      log('Added deindexed sentences %o', deIndexedSentences)
+    }
+    rowLog('Finish')
+  }
+  appLog('Finish')
 
-  const deIndexedSentences = filteredTemplates.map(sentence =>
-    [...sentence]
-      .map(word => listOfWords[word])
-      .filter(o => o)
-      .join(' ')
-  )
-
-  return deIndexedSentences
+  return similarCards
 }

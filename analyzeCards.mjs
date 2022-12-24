@@ -41,24 +41,4 @@ const oracleCardInfo = oracleCards
 console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 console.log('grouping similar texts...')
-groupSimilarCards(uniqueOracleTexts)
-//console.log(groupSimilarCards(uniqueOracleTexts))
-
-/*
-const sentences = [
-  'goodnight and hello moon and world',
-  'goodnight and hello world and moon',
-  'goodnight moon and world',
-  'goodnight moon',
-  'goodnight world',
-  'hello and goodnight moon',
-  'hello and goodnight world and moon',
-  'hello and goodnight world',
-  'hello moon and world',
-  'hello world and moon',
-  'hello moon',
-  'hello world'
-]
-
-groupSimilarCards(sentences)
-*/
+console.log(groupSimilarCards(uniqueOracleTexts))
