@@ -4,13 +4,13 @@ import oracleCards from './oracle-cards.js'
 import fs from 'node:fs'
 
 const cardTypes = [
-  'land',
-  'creature',
-  'artifact',
-  'enchantment',
-  'planeswalker',
-  'instant',
-  'sorcery'
+  //'land'
+  //'creature'
+  //'artifact'
+  //'enchantment'
+  //'planeswalker'
+  //'instant'
+  //'sorcery'
 ]
 
 console.log('preparing oracle text...')
@@ -43,4 +43,7 @@ console.log('removing duplicates...')
 const uniqueOracleTexts = [...new Set(oracleCardInfo)]
 console.log('grouping similar texts...')
 const similarCards = groupSimilarCards(uniqueOracleTexts)
-fs.writeFileSync('./similarCards.json', JSON.stringify(similarCards, null, 4))
+fs.writeFileSync(
+  './similarCreatures.json',
+  JSON.stringify(similarCards, null, 4)
+)
