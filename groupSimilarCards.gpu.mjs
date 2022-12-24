@@ -1,7 +1,7 @@
 import { GPU } from 'gpu.js'
 
 const gpu = new GPU()
-const maxTextureSize = gpu.Kernel?.features?.maxTextureSize || 256
+const maxTextureSize = gpu.Kernel?.features?.maxTextureSize || 16384
 
 export default function (rawSentences) {
   const sentences = rawSentences.map(sentence =>
@@ -23,6 +23,7 @@ export default function (rawSentences) {
     .join('')
 
   const listOfWords = [
+    '',
     blankFill,
     ...new Set(
       sentences
@@ -36,7 +37,7 @@ export default function (rawSentences) {
   const indexedSentences = sentenceWords.map(sentence => {
     const indexedSentence = sentence.map(word => indexMap[word])
     const padCount = longestSentenceWords - sentence.length
-    const padArr = new Array(padCount).fill(-1)
+    const padArr = new Array(padCount).fill(0)
     return [...indexedSentence, ...padArr]
   })
 
@@ -45,6 +46,7 @@ export default function (rawSentences) {
   const height = Math.floor(
     Math.min(indexedSentences.length * 2, maxTextureHeight * 2) / 2
   )
+  console.log(width, height, maxTextureHeight)
 
   // Chunking is going to want this. We feed it one word at a time and one chunk of the sentences at a time and we get something thats a lot easier for the async i/o to handle writing to file (or just storing it in memory after cleaning everything up.)
   // (Also it will let us increase our chunk size back up to a lot.)
@@ -56,7 +58,7 @@ export default function (rawSentences) {
 
       if (wordCount != compWordCount) return compLetter
       if (letter === compLetter) return compLetter
-      return 0
+      return 1
     },
     {
       output: [width, height]
@@ -66,17 +68,14 @@ export default function (rawSentences) {
   const getRowHashes = gpu.createKernel(
     function (rows) {
       let hash = 0
-      for (let i = 0; i < this.constants.strLen; i++) {
-        const letter = rows[this.thread.x][i]
-        if (letter !== -1) {
-          hash += letter * Math.pow(10, this.constants.strLen - i - 1)
-        }
+      for (let i = 0; i < this.constants.width; i++) {
+        hash = 31 * hash + rows[this.thread.x][i]
       }
 
       return hash
     },
     {
-      constants: { strLen: width, arrLen: height },
+      constants: { width },
       output: [height]
     }
   )
@@ -114,7 +113,6 @@ export default function (rawSentences) {
       return rows[this.thread.y][this.thread.x]
     },
     {
-      constants: { strLen: width, arrLen: height },
       output: [width, height]
     }
   )
@@ -151,11 +149,12 @@ export default function (rawSentences) {
     indexedSentences.slice(0, height),
     wordCounts.slice(0, height)
   )
-  console.log('raw templates completed', templates.length)
+  console.log('raw templates completed', templates.length, templates)
 
   const filteredTemplates = templates
-    .filter(template => template.indexOf(0) > -1)
-    .filter(template => Math.max(...template) > 0)
+    .filter(template => template.indexOf(1) > -1)
+    .filter(template => Math.max(...template) > 1)
+  /*
     .map(template =>
       template.filter((x, i, a) => {
         if (i + 1 < a.length && x === 0 && a[i + 1] === 0) {
@@ -164,6 +163,7 @@ export default function (rawSentences) {
         return true
       })
     )
+    */
   console.log('filtered templates completed', filteredTemplates.length)
 
   const deIndexedSentences = filteredTemplates.map(sentence =>

@@ -1,7 +1,7 @@
 function getHash (row, digitHashTable) {
   let hash = 0
   for (let i = 0; i < row.length; i++) {
-    hash += row[i] * Math.pow(10, row.length - i - 1)
+    hash = 31 * hash + row[i]
   }
   return hash
 }
