@@ -158,7 +158,7 @@ export default function (rawSentences) {
 
   appLog('Start')
   const similarCards = new Set()
-  const maxRow = 50
+  const maxRow = indexedSentences.length
   for (let rowId = 0; rowId < maxRow; rowId++) {
     const row = indexedSentences[rowId]
     const rowCount = wordCounts[rowId]
