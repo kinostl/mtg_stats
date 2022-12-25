@@ -4,13 +4,13 @@ import oracleCards from './oracle-cards.js'
 import fs from 'node:fs'
 
 const cardTypes = [
-  //'land'
-  //'creature'
-  //'artifact'
-  //'enchantment'
-  //'planeswalker'
-  //'instant'
-  //'sorcery'
+  'land'
+  'creature'
+  'artifact'
+  'enchantment'
+  'planeswalker'
+  'instant'
+  'sorcery'
 ]
 
 console.log('preparing oracle text...')
